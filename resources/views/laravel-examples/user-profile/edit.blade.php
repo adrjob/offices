@@ -1,3 +1,4 @@
+</style>
 <x-page-template bodyClass='g-sidenav-show bg-gray-200'>
     <x-auth.navbars.sidebar activePage='laravel-examples' activeItem='user-profile' activeSubitem=''>
     </x-auth.navbars.sidebar>
@@ -15,7 +16,7 @@
                             <div class="col-sm-auto col-4">
                                 <form method="POST" action="{{ route('user.update')}}" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="avatar avatar-xl position-relative preview">
+                                    <!-- <div class="avatar avatar-xl position-relative preview">
                                         @if (auth()->user()->picture)
                                         <img src="/storage/{{(auth()->user()->picture)}}" alt="avatar"
                                             class="w-100 rounded-circle shadow-sm" id="file-ip-1-preview">
@@ -31,29 +32,15 @@
                                         </label>
                                         <input type="file" name='picture' id="file-input"
                                             onchange="showPreview(event);">
+                                    </div> -->
                                     </div>
-                            </div>
                             <div class="col-sm-auto col-8 my-auto">
                                 <div class="h-100">
                                     <h5 class="mb-1 font-weight-bolder">
                                         {{ auth()->user()->name }}
-                                    </h5>
-                                    <p class="mb-0 font-weight-normal text-sm">
-                                        CEO / Co-Founder
-                                    </p>
+                                    </h5>                                    
                                 </div>
-                            </div>
-                            <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
-                                <label class="form-check-label mb-0">
-                                    <small id="profileVisibility">
-                                        Switch to invisible
-                                    </small>
-                                </label>
-                                <div class="form-check form-switch ms-2 my-auto">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23"
-                                        checked onchange="visible()">
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     @if (session('status'))
@@ -111,7 +98,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mt-4">
+                            <!-- <div class="row mt-4">
                                 <div class="col-6">
 
                                     <div class="input-group input-group-static">
@@ -135,11 +122,11 @@
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type='submit' class="btn bg-gradient-dark btn-sm mt-6 mb-0">Save
-                                        Changes</button>
+                                    <button type='submit' class="btn btn-vancis btn-sm mt-6 mb-0">Save
+                                        Changes</button >
                                 </div>
                             </div>
                             </form>
@@ -194,7 +181,7 @@
                                     <label class="form-label">Confirm New password</label>
                                     <input type="password" name='password_confirmation' class="form-control">
                                 </div>
-                                <button class="btn bg-gradient-dark btn-sm mt-6 mb-0">Update password</button>
+                                <button class="btn btn-vancis btn-sm mt-6 mb-0">Update password</button>
                             </form>
                         </div>
                     </div>
