@@ -18,14 +18,14 @@
                             <div class="card-body text-center">
                                 <h6>You can login with these 4 user types:</h6>
                                 <ol>
-                                    <li class="text-sm font-weight-normal">Username <strong>admin@material.com</strong> and Password
+                                    <li class="text-sm font-weight-normal">Username <strong>admin@vanciscapital.com</strong> and Password
                                         <strong>secret</strong></li>
                                     <li class="text-sm font-weight-normal">Username <strong>dubai@vanciscapital.com</strong> and Password
-                                       <strong>secret</strong></li>
+                                       <strong>secret@123</strong></li>
                                     <li class="text-sm font-weight-normal"> Username <strong>turkey@vanciscapital.com</strong> and Password
-                                        <strong>secret</strong></li>
+                                        <strong>secret@123</strong></li>
                                     <li class="text-sm font-weight-normal"> Username <strong>vanuatu@vanciscapital.com</strong> and Password
-                                        <strong>secret</strong></li>
+                                        <strong>secret@123</strong></li>
 
                                 </ol>
                                 <form role="form" method="POST" action="{{ route('login') }}" class="text-start">
