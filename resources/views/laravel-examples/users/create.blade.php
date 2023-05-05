@@ -15,12 +15,12 @@
                             <p>Create new user</p>
                         </div>
                         <div class="col-12 text-end">
-                            <a class="btn bg-gradient-dark mb-0 me-4" href="{{ route('users') }}">Back to list</a>
+                            <a class="btn btn-vancis mb-0 me-4" href="{{ route('users') }}">Back to list</a>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('add.user') }}" class='d-flex flex-column align-items-center' enctype="multipart/form-data">
                                 @csrf
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
 
                                     <div class="avatar avatar-xl position-relative preview">
                                         <img src="{{ asset('assets') }}/img/placeholder.jpg" alt="avatar"
@@ -37,7 +37,7 @@
                                     @error('picture')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
-                                </div>
+                                </div> -->
                                 <div class="form-group col-12 col-md-6">
 
                                     <label for="exampleInputname">Name</label>
@@ -81,7 +81,7 @@
                                     <label for="examplePassword2">Confirm Password</label>
                                     <input type="password" name='password_confirmation' class="form-control border border-2 p-2" id="examplePassword2" placeholder="Confirm Password">
                                 </div>
-                                <button type="submit" class="btn btn-dark mt-3">Add user</button>
+                                <button type="submit" class="btn btn-vancis mt-3">Add user</button>
                             </form>
                         </div>
                     </div>

@@ -26,13 +26,14 @@ class UserManagementController extends Controller
             'email' => 'required|unique:users,email',
             'name' =>'required|',
             'password' => 'required|confirmed|min:7',
-            'picture' => 'required|mimes:jpg,jpeg,png,bmp,tiff |max:4096',
+            // 'picture' => 'required|mimes:jpg,jpeg,png,bmp,tiff |max:4096',
             'role_id' => 'required|exists:roles,id',
         ]);
 
-        $path = request()->picture->store('dubai_invoices', 'public');
-        $attributes['picture'] = "$path";
-
+        if(request()->picture) {
+            $path = request()->picture->store('dubai_invoices', 'public');
+            $attributes['picture'] = "$path";
+        }        
 
         User::create($attributes);
 

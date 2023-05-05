@@ -32,7 +32,7 @@
                         @endif
                         @can('create', App\Models\User::class)
                         <div class="col-12 text-end">
-                            <a class="btn bg-gradient-dark mb-0 me-4" href="{{ route('add.user') }}"><i
+                            <a class="btn btn-vancis mb-0 me-4" href="{{ route('add.user') }}"><i
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Add User</a>
                         </div>
                         @endcan
@@ -42,8 +42,8 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             ID</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Photo</th>
+                                        <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Photo</th> -->
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Name</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -62,14 +62,14 @@
                                     @foreach ($users as $user)
                                     <tr>
                                         <td class="text-sm font-weight-normal">{{ $user->id }}</td>
-                                        <td class="avatar avatar-xxl position-relative">
+                                        <!-- <td class="avatar avatar-xxl position-relative">
                                             @if ($user->picture)
                                             <img src="/storage/{{($user->picture)}} " alt="picture"
                                                 class="w-100 rounded-circle shadow-sm">
                                             @else
                                             <img src="{{ asset('assets') }}/img/default-avatar.png" alt="avatar"
                                                 class="w-100 rounded-circle shadow-sm">
-                                            @endif </td>
+                                            @endif </td> -->
                                         <td class="text-sm font-weight-normal">{{ $user->name }}</td>
                                         <td class="text-sm font-weight-normal">{{ $user->email }}</td>
                                         <td class="text-sm font-weight-normal">{{ $user->role->name }}</td>
@@ -81,7 +81,7 @@
                                             <form method="POST" action="{{ route('delete.user', $user) }}">
                                                 @csrf
                                                 @can('update', $user)
-                                                <a rel="tooltip" class="btn btn-success btn-link"
+                                                <a rel="tooltip" class="btn bg-gradient-success mt-2 btn-sm"
                                                     href="{{ route('edit.user', $user) }}" data-original-title=""
                                                     title="">
                                                     <i class="material-icons">edit</i>
@@ -89,7 +89,7 @@
                                                 </a>
                                                 @endcan
                                                 @can('delete', $user)
-                                                <button type="button" class="btn btn-danger btn-link"
+                                                <button type="button" class="btn btn-danger mt-2 btn-sm"
                                                     data-original-title="" title=""
                                                     onclick="confirm('Are you sure you want to delete this user?') ? this.parentElement.submit() : ''">
                                                     <i class="material-icons">close</i>
@@ -99,10 +99,10 @@
                                             </form>
                                             @else
                                             @can('update', $user)
-                                            <a rel="tooltip" class="btn btn-success btn-link"
+                                            <a class="btn bg-gradient-success mt-2 btn-sm"
                                                 href="{{ route('edit.user', $user) }}" data-original-title="" title="">
                                                 <i class="material-icons">edit</i>
-                                                <div class="ripple-container"></div>
+                                                    <div class="ripple-container"></div>
                                             </a>
                                             @endcan
                                             @endif
