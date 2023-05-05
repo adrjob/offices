@@ -24,35 +24,12 @@
                         </div>
                         @endif
                         <div class="col-12 text-end">
-                            <a class="btn bg-gradient-dark mb-0 me-4" href="{{ route('users') }}">Back to list</a>
+                            <a class="btn btn-vancis mb-0 me-4" href="{{ route('users') }}">Back to list</a>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('edit.user', $user) }}"
                                 class='d-flex flex-column align-items-center' enctype="multipart/form-data">
-                                @csrf
-                                <div class="col-md-6">
-
-                                    <div class="avatar avatar-xl position-relative preview">
-                                        @if ($user->picture)
-                                        <img src="/storage/{{$user->picture}}" alt="avatar"
-                                            class="w-100 rounded-circle shadow-sm" id="file-ip-1-preview">
-                                        @else
-                                        <img src="{{ asset('assets') }}/img/default-avatar.png" alt="avatar"
-                                            class="w-100 rounded-circle shadow-sm" id="file-ip-1-preview">
-                                        @endif
-                                        <label for="file-input"
-                                            class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                                            <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                title="" aria-hidden="true" data-bs-original-title="Select Image"
-                                                aria-label="Select Image"></i><span class="sr-only">Select Image</span>
-                                        </label>
-                                        <input type="file" name='picture' id="file-input"
-                                            onchange="showPreview(event);">
-                                    </div>
-                                    @error('picture')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
+                                @csrf                                
                                 <div class="form-group col-12 col-md-6">
 
                                     <label for="exampleInputname">Name</label>
@@ -102,7 +79,7 @@
                                         class="form-control border border-2 p-2" id="examplePassword2"
                                         placeholder="Confirm Password">
                                 </div>
-                                <button type="submit" class="btn btn-dark mt-3">Save</button>
+                                <button type="submit" class="btn btn-vancis mt-3">Save</button>
                             </form>
                         </div>
                     </div>

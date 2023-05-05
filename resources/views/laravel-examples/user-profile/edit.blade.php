@@ -1,6 +1,6 @@
 </style>
 <x-page-template bodyClass='g-sidenav-show bg-gray-200'>
-    <x-auth.navbars.sidebar activePage='laravel-examples' activeItem='user-profile' activeSubitem=''>
+    <x-auth.navbars.sidebar activePage='user-profile' activeItem='user-profile' activeSubitem=''>
     </x-auth.navbars.sidebar>
     <main class="main-content">
         <x-auth.navbars.navs.auth pageTitle='User Profile'></x-auth.navbars.navs.auth>
