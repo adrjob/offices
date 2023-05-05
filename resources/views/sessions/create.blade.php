@@ -19,9 +19,9 @@
                                 <h6>You can login with these 4 user types:</h6>
                                 <ol>
                                     <li class="text-sm font-weight-normal">Username <strong>admin@vanciscapital.com</strong> and Password
-                                        <strong>secret</strong></li>
+                                        <strong>secret@123</strong></li>
                                     <li class="text-sm font-weight-normal">Username <strong>dubai@vanciscapital.com</strong> and Password
-                                       <strong>secret@123</strong></li>
+                                        <strong>secret@123</strong></li>
                                     <li class="text-sm font-weight-normal"> Username <strong>turkey@vanciscapital.com</strong> and Password
                                         <strong>secret@123</strong></li>
                                     <li class="text-sm font-weight-normal"> Username <strong>vanuatu@vanciscapital.com</strong> and Password
@@ -42,8 +42,7 @@
 
                                     <div class="input-group input-group-dynamic mt-3">
                                         <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" name='email'
-                                            value='admin@material.com'>
+                                        <input type="email" class="form-control" name='email'>
                                     </div>
                                     @error('email')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
@@ -51,7 +50,7 @@
 
                                     <div class="input-group input-group-dynamic mt-3">
                                         <label class="form-label">Password</label>
-                                        <input type="password" class="form-control" name='password' value='secret'>
+                                        <input type="password" class="form-control" name='password'>
                                     </div>
                                     @error('password')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
