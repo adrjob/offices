@@ -16,7 +16,7 @@
                     <div class="col-lg-5 col-md-8 col-12 mx-auto">
                         <div class="card z-index-0 fadeIn3 fadeInBottom">                            
                             <div class="card-body text-center">
-                                <h6>You can login with these 4 user types:</h6>
+                                <h6>You can login with these 3 user types:</h6>
                                 <ol>
                                     <li class="text-sm font-weight-normal">Username <strong>admin@vanciscapital.com</strong> and Password
                                         <strong>secret@123</strong></li>
