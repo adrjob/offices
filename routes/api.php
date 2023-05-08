@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DubaiController;
+use App\Http\Controllers\DubaiCashController;
 use App\Http\Controllers\TurkeyController;
 use App\Http\Controllers\VanuatuController;
 
@@ -20,7 +21,9 @@ use App\Http\Controllers\VanuatuController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-// Route::get('/dubai/{id}', [DubaiController::class, 'indexApi']);
+
+Route::get('/cash/dubai/{key?}', [DubaiCashController::class, 'indexApi']);
+
 Route::get('/dubai/{key?}', [DubaiController::class, 'indexApi']);
 Route::get('/turkey/{key?}', [TurkeyController::class, 'indexApi']);
 Route::get('/vanuatu/{key?}', [VanuatuController::class, 'indexApi']);
