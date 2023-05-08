@@ -1,5 +1,5 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
-    <x-auth.navbars.sidebar activePage="dubai" activeItem="dubai" activeSubitem="">
+    <x-auth.navbars.sidebar activePage="cash_dubai" activeItem="cash_dubai" activeSubitem="">
     </x-auth.navbars.sidebar>    
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
@@ -93,6 +93,7 @@
                                         <th>Description</th>                                           
                                         <th>Receive</th>                                
                                         <th>Spend</th>
+                                        <th>Total</th>
                                         <th>Created At</th>
                                         <th>Action</th>
                                     </tr>
@@ -102,7 +103,8 @@
                                         <th></th>                                    
                                         <th></th>    
                                         <th></th>
-                                        <th>Total</th>                                
+                                        <th></th>                                
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -142,19 +144,7 @@
             { data: 'spend' },
             { data: 'created_at' }
         ],
-        columnDefs: [
-            // {
-            //     targets: [4],
-            //     render: function (data, type, row) {
-            //         return "<a href='/storage/" + row.dubaiPath + "' target='_blank'><i class='material-icons'>visibility</i></a>";
-            //     }
-            // },
-            // {
-            //     targets: [3],
-            //     render: function (data, type, row) {
-            //         return "<a href='/storage/" + row.dubaiPath + "' target='_blank'><i class='material-icons'>visibility</i></a>";
-            //     }
-            // },
+        columnDefs: [           
             {
                 targets: [5],
                 render: function (data, type, row) {
@@ -181,6 +171,12 @@
                     } else {
                         return "<span style='color: red'>" + row.spend + "</span>"
                     }                                     
+                }
+            },
+            {
+                targets: [4],
+                render: function (data, type, row) {
+                    return row.spend;                            
                 }
             },
             {

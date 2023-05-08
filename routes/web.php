@@ -51,7 +51,7 @@ Route::get('reset-password/{token}', function ($token) {
 	return view('sessions.password.reset', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
 
-Route::get('cash/dubai', [DubaiCashController::class, 'index'])->middleware('auth')->name('office.dubai');
+Route::get('cash/dubai', [DubaiCashController::class, 'index'])->middleware('auth')->name('cash.dubai');
 Route::post('cash/dubai/store', [DubaiCashController::class, 'store'])->middleware('auth')->name('cash.dubai.store');
 
 Route::get('office/dubai', [DubaiController::class, 'index'])->middleware('auth')->name('office.dubai');

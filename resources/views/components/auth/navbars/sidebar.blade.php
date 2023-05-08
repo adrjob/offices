@@ -31,7 +31,19 @@
                         aria-controls="dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/ae.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Dubai</span>
+                        <span class="nav-link-text ms-2 ps-1">Dubai Invoices</span>
+                    </a>                                            
+                </li>
+                @endcan
+
+                @can('viewAny', App\Models\Dubai::class)
+                <li class="nav-item">
+                <a href="{{ route('cash.dubai') }}"
+                        class="nav-link text-white {{ $activePage == 'cash_dubai' ? ' active ' : '' }} "
+                        aria-controls="cash_dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'">
+                        <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
+                        <img src="https://flagcdn.com/20x15/ae.png" alt="">
+                        <span class="nav-link-text ms-2 ps-1">Cash Dubai</span>
                     </a>                                            
                 </li>
                 @endcan
