@@ -130,81 +130,92 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     
     <script>
-    
-    // var month = new Date().getMonth() + 1;
-    
+        // var month = new Date().getMonth() + 1;
+        var table = $('#example').DataTable({
+            ajax: '/api/cash/dubai/',
+            // searching: false,
+            columns: [
+                { data: 'id' },
+                { data: 'description' },
+                { data: 'receive' },
+                { data: 'spend' },                
+                { data: 'created_at' }
+            ],
+            columnDefs: [                                       
+                {
+                    targets: [2],
+                    render: function (data, type, row) {
+                        return "<span style='color: green'>" + row.receive + "</span>"
 
-    var table = $('#example').DataTable({
-        ajax: '/api/cash/dubai/',
-        // searching: false,
-        columns: [
-            { data: 'id' },            
-            { data: 'description' },            
-            { data: 'receive' },
-            { data: 'spend' },
-            { data: 'created_at' }
-        ],
-        columnDefs: [           
-            {
-                targets: [5],
-                render: function (data, type, row) {
-                    if(row.status  = 0) {
-                        return "view";
-                    } else {
-                        return "No File";
                     }
-                 
-                }
-            },
-            {
-                targets: [2],
-                render: function (data, type, row) {
-                    return "<span style='color: green'>" + row.receive + "</span>"
-                 
-                }
-            },
-            {
-                targets: [3],
-                render: function (data, type, row) {
-                    if(row.spend == null) {
-                        return "<span style='color: red'>0</span>"
-                    } else {
-                        return "<span style='color: red'>" + row.spend + "</span>"
-                    }                                     
-                }
-            },
-            {
-                targets: [4],
-                render: function (data, type, row) {
-                    return row.spend;                            
-                }
-            },
-            {
-                targets: '_all',
-                render: function (data, type, row) {
-                    if (type === 'display') {
-                        return isNaN(data) && moment(data).isValid() ?
-                            moment(data).format('MM/DD/YYYY', 'YYYY/MM/DD')
-                            : data;
+                },
+                {
+                    targets: [3],
+                    render: function (data, type, row) {
+                        if (row.spend == null) {
+                            return "<span style='color: red'>0</span>"
+                        } else {
+                            return "<span style='color: red'>" + row.spend + "</span>"
+                        }
                     }
-                    return data;
-                }
-            }
-        ],
-        "footerCallback": function( tfoot, data, start, end, display ) {
-            var api = this.api();
-    $( api.column( 3 ).footer() ).html(
-        api.column( 3 ).data().reduce( function ( a, b ) {
-            console.log(typeof b)
-            return Number(a) + Number(b);
-        }, 0 )
-    );
-  }        
-    })
+                },
+                {
+                    targets: [4],
+                    render: function (data, type, row) {
+                        return row.receive - row.spend;
+                    }
+                }, 
+                {
+                    targets:[5],
+                    render: function (data, type, row) {
+                        return isNaN(row.created_at) && moment(row.created_at).isValid() ?
+                                moment(row.created_at).format('MM/DD/YYYY', 'YYYY/MM/DD')
+                                : row.created_at;
+                    }
+                },               
+                {
+                    targets: [6],
+                    render: function (data, type, row) {
+                        if (row.status = 0) {
+                            return "view";
+                        } else {
+                            return "No File";
+                        }
 
-    $('#search-month').on('change', function () {
-        table.ajax.url('/api/dubai/' + this.value ).load();                
-    });        
+                    }
+                },
+                // {
+                //     targets: '_all',
+                //     render: function (data, type, row) {
+                //         if (type === 'display') {
+                //             return isNaN(data) && moment(data).isValid() ?
+                //                 moment(data).format('MM/DD/YYYY', 'YYYY/MM/DD')
+                //                 : data;
+                //         }
+                //         return data;
+                //     }
+                // }
+            ],
+            "footerCallback": function (tfoot, data, start, end, display) {
+                var api = this.api();
+                $(api.column(3).footer()).html(
+                    api.column(3).data().reduce(function (a, b) {
+                        console.log(typeof b)
+                        return Number(a) + Number(b);
+                    }, 0)
+                );   
+                $(api.column(2).footer()).html(
+                    api.column(2).data().reduce(function (a, b) {
+                        console.log(typeof b)
+                        return Number(a) + Number(b);
+                    }, 0)
+                );             
+            }         
+        })
+
+        $('#search-month').on('change', function () {
+            table.ajax.url('/api/cash/dubai/' + this.value).load();
+        });        
     </script>
     @endpush
 </x-page-template>
