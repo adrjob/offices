@@ -32,11 +32,19 @@ class VanuatuController extends Controller
      * 
      * @return \Illuminate\Http\Response
     */
-    public function indexApi()
+    public function indexApi(Request $request)
     {                
-        $now = Carbon::now();        
-        $dubaiInv = Vanuatu::whereMonth('created_at', '=', $now->month)->paginate();
-        return VanuatuResource::collection($dubaiInv);
+        // $ok = 1 < 0 ? 5 : 0;
+        if($request->key != NULL)
+        {
+            $dubaiInv = Vanuatu::whereMonth('created_at', '=', $request->key)->paginate();
+            return VanuatuResource::collection($dubaiInv);        
+        } else {
+            $now = Carbon::now();        
+            $ok = 1 > 0 ? 5 : $now->month;
+            $dubaiInv = Vanuatu::whereMonth('created_at', '=', $now->month)->paginate();
+            return VanuatuResource::collection($dubaiInv);        
+        }        
     }
 
     /**

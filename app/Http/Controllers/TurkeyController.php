@@ -32,11 +32,19 @@ class TurkeyController extends Controller
      * 
      * @return \Illuminate\Http\Response
     */
-    public function indexApi()
+    public function indexApi(Request $request)
     {                
-        $now = Carbon::now();        
-        $dubaiInv = Turkey::whereMonth('created_at', '=', $now->month)->paginate();
-        return TurkeyResource::collection($dubaiInv);
+        // $ok = 1 < 0 ? 5 : 0;
+        if($request->key != NULL)
+        {
+            $dubaiInv = Turkey::whereMonth('created_at', '=', $request->key)->paginate();
+            return TurkeyResource::collection($dubaiInv);        
+        } else {
+            $now = Carbon::now();        
+            $ok = 1 > 0 ? 5 : $now->month;
+            $dubaiInv = Turkey::whereMonth('created_at', '=', $now->month)->paginate();
+            return TurkeyResource::collection($dubaiInv);        
+        }        
     }
 
     /**

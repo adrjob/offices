@@ -16,8 +16,8 @@ class DubaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request)
+    {        
         $au = auth()->user();
         
         if($au->isDubai()|| $au->isAdmin()) {
@@ -35,11 +35,19 @@ class DubaiController extends Controller
      * 
      * @return \Illuminate\Http\Response
     */
-    public function indexApi()
+    public function indexApi(Request $request)
     {                
-        $now = Carbon::now();        
-        $dubaiInv = Dubai::whereMonth('created_at', '=', $now->month)->paginate();
-        return DubaiResource::collection($dubaiInv);
+        // $ok = 1 < 0 ? 5 : 0;
+        if($request->key != NULL)
+        {
+            $dubaiInv = Dubai::whereMonth('created_at', '=', $request->key)->paginate();
+            return DubaiResource::collection($dubaiInv);        
+        } else {
+            $now = Carbon::now();        
+            $ok = 1 > 0 ? 5 : $now->month;
+            $dubaiInv = Dubai::whereMonth('created_at', '=', $now->month)->paginate();
+            return DubaiResource::collection($dubaiInv);        
+        }        
     }
 
     /**
