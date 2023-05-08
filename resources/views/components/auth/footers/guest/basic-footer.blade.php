@@ -27,7 +27,7 @@
     <div class="col">
     <img src="https://vanciscapital.com/wp-content/uploads/2021/09/Turkey-e1632660970933.jpeg" class="flag">
       <a href="">
-              T3 Blok Office 13. 2nd floor,  Kagithane, Istanbul Turkey
+              T3 Blok Office 13. 2nd floor,  Kagithane, Istanbul
           </a>
     </div>
   </div>
