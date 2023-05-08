@@ -55,9 +55,21 @@
                         aria-controls="turkey" role="button" aria-expanded="false">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/tr.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Turkey</span>
+                        <span class="nav-link-text ms-2 ps-1">Istanbul</span>
                     </a>
                 </li>    
+                @endcan
+
+                @can('viewAny', App\Models\Turkey::class)
+                <li class="nav-item">
+                <a href="{{ route('cash.istanbul') }}"
+                        class="nav-link text-white {{ $activePage == 'cash_istanbul' ? ' active ' : '' }} "
+                        aria-controls="cash_istanbul" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'">
+                        <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
+                        <img src="https://flagcdn.com/20x15/tr.png" alt="">
+                        <span class="nav-link-text ms-2 ps-1">Cash Istanbul</span>
+                    </a>                                            
+                </li>
                 @endcan
 
                 @can('viewAny', App\Models\Vanuatu::class)
@@ -67,10 +79,22 @@
                         aria-controls="vanuatu" role="button" aria-expanded="false">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/vu.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Vanuatu</span>
+                        <span class="nav-link-text ms-2 ps-1">Vanuatu Invoices</span>
                     </a>
                 </li>       
                 @endcan  
+
+                @can('viewAny', App\Models\Vanuatu::class)
+                <li class="nav-item">  
+                    <a href="{{ route('cash.vanuatu') }}"
+                        class="nav-link text-white {{ $activePage == 'vanuatu_cash' ? ' active ' : '' }} "
+                        aria-controls="vanuatu_cash" role="button" aria-expanded="false">
+                        <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
+                        <img src="https://flagcdn.com/20x15/vu.png" alt="">
+                        <span class="nav-link-text ms-2 ps-1">Vanuatu Cash</span>
+                    </a>
+                </li>    
+                @endcan
 
                 <li class="nav-item">
                 <a href="{{ route('user-profile') }}"

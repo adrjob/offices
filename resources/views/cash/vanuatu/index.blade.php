@@ -1,9 +1,9 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
-    <x-auth.navbars.sidebar activePage="turkey" activeItem="turkey" activeSubitem="">
+    <x-auth.navbars.sidebar activePage="cash_vanuatu" activeItem="cash_vanuatu" activeSubitem="">
     </x-auth.navbars.sidebar>    
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-auth.navbars.navs.auth pageTitle="Invoices Turkey"></x-auth.navbars.navs.auth>
+        <x-auth.navbars.navs.auth pageTitle="Cash Vanuatu"></x-auth.navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row mt-4">
@@ -29,10 +29,10 @@
                 <div class="col-12">
                     <div class="card">
                     <div class="card-header">
-                            <h5 class="mb-0">Invoices Turkey</h5>     
+                            <h5 class="mb-0">Cash Vanuatu</h5>     
                             <div>
                             <label class="ms-0" for="search-month">Search By Month</label>    
-                            <select class="form-control" name="search-month" id="search-month">                                
+                            <select class="form-control" name="search-month" id="search-month">
                                 <option value="01">1 - Jan</option>
                                 <option value="02">2 - Feb</option>
                                 <option value="03">3 - Mar</option>
@@ -46,10 +46,7 @@
                                 <option value="11">11 - Nov</option>
                                 <option value="12">12 - Dez</option>
                             </select>
-                            </div>                            
-                            <!-- <h6>
-                                Total This Month (AED): {{$total}}
-                            </h6>                        -->
+                            </div>                                                      
                         </div>
                         <button type="button" class="btn bg-gradient-dark btn-vancis mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">Add New</button>
                         <div class="modal fade" id="exampleModalMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessage" aria-hidden="true">
@@ -62,19 +59,19 @@
                                     <p class="mb-0"></p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form text-left" autocomplete="off"  method="POST" action="{{ route('office.turkey.store') }}" enctype="multipart/form-data">
+                                    <form role="form text-left" autocomplete="off"  method="POST" action="{{ route('cash.vanuatu.store') }}" enctype="multipart/form-data">
                                     @csrf    
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">Description</label>
                                         <input type="text" name="description" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)" required>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">Amount</label>
-                                        <input type="number" name="total" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)" required>
+                                        <label class="form-label">Receive</label>
+                                        <input type="number" name="receive" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)" required>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         <!-- <label class="form-label">Password</label> -->
-                                        <input type="file" name="dubaiPath" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)" required>
+                                        <input type="file" name="dubaiPath" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)">
                                     </div>                
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}" />                                    
                                     <div class="text-center">
@@ -93,8 +90,10 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Id</th>                                    
-                                        <th>Description</th>    
-                                        <th>Amount</th>                                
+                                        <th>Description</th>                                           
+                                        <th>Receive</th>                                
+                                        <th>Spend</th>
+                                        <th>Total</th>
                                         <th>Created At</th>
                                         <th>Action</th>
                                     </tr>
@@ -103,7 +102,9 @@
                                     <tr>
                                         <th></th>                                    
                                         <th></th>    
-                                        <th>Total</th>                                
+                                        <th></th>
+                                        <th></th>                                
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -129,52 +130,92 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     
     <script>
-    
-    // var month = new Date().getMonth() + 1;
-    
+        // var month = new Date().getMonth() + 1;
+        var table = $('#example').DataTable({
+            ajax: '/api/cash/vanuatu/',
+            // searching: false,
+            columns: [
+                { data: 'id' },
+                { data: 'description' },
+                { data: 'receive' },
+                { data: 'spend' },                
+                { data: 'created_at' }
+            ],
+            columnDefs: [                                       
+                {
+                    targets: [2],
+                    render: function (data, type, row) {
+                        return "<span style='color: green'>" + row.receive + "</span>"
 
-    var table = $('#example').DataTable({
-        ajax: '/api/istanbul/',
-        // searching: false,
-        columns: [
-            { data: 'id' },            
-            { data: 'description' },
-            { data: 'total' },
-            { data: 'created_at' }
-        ],
-        columnDefs: [
-            {
-                targets: [4],
-                render: function (data, type, row) {
-                    return "<a href='/storage/" + row.dubaiPath + "' target='_blank'><i class='material-icons'>visibility</i></a>";
-                }
-            },
-            {
-                targets: '_all',
-                render: function (data, type, row) {
-                    if (type === 'display') {
-                        return isNaN(data) && moment(data).isValid() ?
-                            moment(data).format('MM/DD/YYYY', 'YYYY/MM/DD')
-                            : data;
                     }
-                    return data;
-                }
-            }
-        ],
-        "footerCallback": function( tfoot, data, start, end, display ) {
-            var api = this.api();
-    $( api.column( 2 ).footer() ).html(
-        api.column( 2 ).data().reduce( function ( a, b ) {
-            console.log(typeof b)
-            return Number(a) + Number(b);
-        }, 0 )
-    );
-  }        
-    })
+                },
+                {
+                    targets: [3],
+                    render: function (data, type, row) {
+                        if (row.spend == null) {
+                            return "<span style='color: red'>0</span>"
+                        } else {
+                            return "<span style='color: red'>" + row.spend + "</span>"
+                        }
+                    }
+                },
+                {
+                    targets: [4],
+                    render: function (data, type, row) {
+                        return row.receive - row.spend;
+                    }
+                }, 
+                {
+                    targets:[5],
+                    render: function (data, type, row) {
+                        return isNaN(row.created_at) && moment(row.created_at).isValid() ?
+                                moment(row.created_at).format('MM/DD/YYYY', 'YYYY/MM/DD')
+                                : row.created_at;
+                    }
+                },               
+                {
+                    targets: [6],
+                    render: function (data, type, row) {
+                        if (row.status = 0) {
+                            return "view";
+                        } else {
+                            return "No File";
+                        }
 
-    $('#search-month').on('change', function () {
-        table.ajax.url('/api/istanbul/' + this.value ).load();                
-    });        
+                    }
+                },
+                // {
+                //     targets: '_all',
+                //     render: function (data, type, row) {
+                //         if (type === 'display') {
+                //             return isNaN(data) && moment(data).isValid() ?
+                //                 moment(data).format('MM/DD/YYYY', 'YYYY/MM/DD')
+                //                 : data;
+                //         }
+                //         return data;
+                //     }
+                // }
+            ],
+            "footerCallback": function (tfoot, data, start, end, display) {
+                var api = this.api();
+                $(api.column(3).footer()).html(
+                    api.column(3).data().reduce(function (a, b) {
+                        console.log(typeof b)
+                        return Number(a) + Number(b);
+                    }, 0)
+                );   
+                $(api.column(2).footer()).html(
+                    api.column(2).data().reduce(function (a, b) {
+                        console.log(typeof b)
+                        return Number(a) + Number(b);
+                    }, 0)
+                );             
+            }         
+        })
+
+        $('#search-month').on('change', function () {
+            table.ajax.url('/api/cash/vanuatu/' + this.value).load();
+        });        
     </script>
     @endpush
 </x-page-template>

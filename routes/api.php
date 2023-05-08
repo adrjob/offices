@@ -4,8 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DubaiController;
 use App\Http\Controllers\DubaiCashController;
+use App\Http\Controllers\IstanbulCashController;
 use App\Http\Controllers\TurkeyController;
 use App\Http\Controllers\VanuatuController;
+use App\Http\Controllers\VanuatuCashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/cash/dubai/{key?}', [DubaiCashController::class, 'indexApi']);
+Route::get('/cash/istanbul/{key?}', [IstanbulCashController::class, 'indexApi']);
+Route::get('/cash/vanuatu/{key?}', [VanuatuCashController::class, 'indexApi']);
 
 Route::get('/dubai/{key?}', [DubaiController::class, 'indexApi']);
-Route::get('/turkey/{key?}', [TurkeyController::class, 'indexApi']);
+Route::get('/istanbul/{key?}', [TurkeyController::class, 'indexApi']);
 Route::get('/vanuatu/{key?}', [VanuatuController::class, 'indexApi']);
 

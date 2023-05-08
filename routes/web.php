@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DubaiController;
 use App\Http\Controllers\DubaiCashController;
 use App\Http\Controllers\TurkeyController;
+use App\Http\Controllers\IstanbulCashController;
 use App\Http\Controllers\VanuatuController;
+use App\Http\Controllers\VanuatuCashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,11 +56,17 @@ Route::get('reset-password/{token}', function ($token) {
 Route::get('cash/dubai', [DubaiCashController::class, 'index'])->middleware('auth')->name('cash.dubai');
 Route::post('cash/dubai/store', [DubaiCashController::class, 'store'])->middleware('auth')->name('cash.dubai.store');
 
+Route::get('cash/istanbul', [IstanbulCashController::class, 'index'])->middleware('auth')->name('cash.istanbul');
+Route::post('cash/istanbul/store', [IstanbulCashController::class, 'store'])->middleware('auth')->name('cash.istanbul.store');
+
+Route::get('cash/vanuatu', [VanuatuCashController::class, 'index'])->middleware('auth')->name('cash.vanuatu');
+Route::post('cash/vanuatu/store', [VanuatuCashController::class, 'store'])->middleware('auth')->name('cash.vanuatu.store');
+
 Route::get('office/dubai', [DubaiController::class, 'index'])->middleware('auth')->name('office.dubai');
-Route::get('office/turkey', [TurkeyController::class, 'index'])->middleware('auth')->name('office.turkey');
+Route::get('office/istanbul', [TurkeyController::class, 'index'])->middleware('auth')->name('office.turkey');
 Route::get('office/vanuatu', [VanuatuController::class, 'index'])->middleware('auth')->name('office.vanuatu');
 Route::post('office/dubai/store', [DubaiController::class, 'store'])->middleware('auth')->name('office.dubai.store');
-Route::post('office/turkey/store', [TurkeyController::class, 'store'])->middleware('auth')->name('office.turkey.store');
+Route::post('office/istanbul/store', [TurkeyController::class, 'store'])->middleware('auth')->name('office.turkey.store');
 Route::post('office/vanuatu/store', [VanuatuController::class, 'store'])->middleware('auth')->name('office.vanuatu.store');
 Route::post('user-profile', [UserController::class, 'update'])->middleware('auth')->name('user.update');
 Route::get('user-profile', [UserController::class, 'index'])->middleware('auth')->name('user-profile');
