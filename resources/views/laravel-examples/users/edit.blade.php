@@ -67,7 +67,7 @@
                                 <div class="form-group col-12 col-md-6 mt-3">
 
                                     <label for="examplePassword">Password</label>
-                                    <input type="text" name='password' class="form-control border border-2 p-2"
+                                    <input type="password" name='password' class="form-control border border-2 p-2"
                                         id="examplePassword" placeholder="Enter password">
                                         @error('password')
                                         <p class='text-danger inputerror'>{{ $message }} </p>
