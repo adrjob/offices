@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dubai;
+use App\Http\Resources\DubaiResource;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
@@ -20,12 +21,25 @@ class DubaiController extends Controller
         $au = auth()->user();
         
         if($au->isDubai()|| $au->isAdmin()) {
-            $now = Carbon::now();
+            $now = Carbon::now();            
             $users = Dubai::whereMonth('created_at', '=', $now->month)->get();        
             $total = $users->sum('total');                
+            // return view('offices.dubai.index', ['dubai' => Dubai::whereMonth('created_at', '=', $now->month)->get(), 'total' => $total]);     
             return view('offices.dubai.index', ['dubai' => Dubai::get(), 'total' => $total]);     
         }
         abort(403);
+    }
+
+    /**  
+     * Display a json Dubai Invoices data
+     * 
+     * @return \Illuminate\Http\Response
+    */
+    public function indexApi()
+    {                
+        $now = Carbon::now();        
+        $dubaiInv = Dubai::whereMonth('created_at', '=', $now->month)->paginate();
+        return DubaiResource::collection($dubaiInv);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Turkey;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Http\Resources\TurkeyResource;
 
 class TurkeyController extends Controller
 {
@@ -24,6 +25,18 @@ class TurkeyController extends Controller
             return view('offices.turkey.index', ['dubai' => Turkey::get(), 'total' => $total]);     
         }        
         abort(403);        
+    }
+
+     /**  
+     * Display a json Dubai Invoices data
+     * 
+     * @return \Illuminate\Http\Response
+    */
+    public function indexApi()
+    {                
+        $now = Carbon::now();        
+        $dubaiInv = Turkey::whereMonth('created_at', '=', $now->month)->paginate();
+        return TurkeyResource::collection($dubaiInv);
     }
 
     /**

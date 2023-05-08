@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vanuatu;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Http\Resources\VanuatuResource;
 
 class VanuatuController extends Controller
 {
@@ -24,6 +25,18 @@ class VanuatuController extends Controller
             return view('offices.vanuatu.index', ['dubai' => Vanuatu::get(), 'total' => $total]);                 
         }        
         abort(403);     
+    }
+
+     /**  
+     * Display a json Dubai Invoices data
+     * 
+     * @return \Illuminate\Http\Response
+    */
+    public function indexApi()
+    {                
+        $now = Carbon::now();        
+        $dubaiInv = Vanuatu::whereMonth('created_at', '=', $now->month)->paginate();
+        return VanuatuResource::collection($dubaiInv);
     }
 
     /**

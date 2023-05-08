@@ -38,16 +38,27 @@
   <!-- Nucleo Icons -->
   <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
   <link href="{{ asset('assets') }}/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"; rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets') }}/css/material-dashboard.css?v=3.0.1" rel="stylesheet" />
-  <style>.btn-vancis {
+  <style>
+  .btn-vancis {
         background-image: linear-gradient(195deg, #9a752f 0%, #9a752f 100%) !important;
         color: white !important;
-}</style>
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    /* color: white !important; */
+    padding: 0 !important;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    /* background-image: linear-gradient(195deg, #9a752f 0%, #9a752f 100%) !important; */
+}
+</style>
 </head>
 
 <body class="{{ $bodyClass }}">

@@ -7,6 +7,11 @@
         </x-auth.navbars.navs.guest>
     </nav>
     <!-- End Navbar -->
+    <style>
+        .logo-img {
+            width: 40% !important;
+        }        
+    </style>
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-100 "
         style="background-color: #0a1c30">
@@ -16,18 +21,9 @@
                     <div class="col-lg-5 col-md-8 col-12 mx-auto">
                         <div class="card z-index-0 fadeIn3 fadeInBottom">                            
                             <div class="card-body text-center">
-                                <h6>You can login with these 4 user types:</h6>
-                                <ol>
-                                    <li class="text-sm font-weight-normal">Username <strong>admin@vanciscapital.com</strong> and Password
-                                        <strong>secret@123</strong></li>
-                                    <li class="text-sm font-weight-normal">Username <strong>dubai@vanciscapital.com</strong> and Password
-                                        <strong>secret@123</strong></li>
-                                    <li class="text-sm font-weight-normal"> Username <strong>turkey@vanciscapital.com</strong> and Password
-                                        <strong>secret@123</strong></li>
-                                    <li class="text-sm font-weight-normal"> Username <strong>vanuatu@vanciscapital.com</strong> and Password
-                                        <strong>secret@123</strong></li>
-
-                                </ol>
+                                <div >
+                                    <img class="logo-img" src="https://vanciscapital.com/wp-content/uploads/2022/11/cropped-Vancis-Capital-New-Logo-2022-White-Gold-Recovered.png" alt="">
+                                </div>
                                 <form role="form" method="POST" action="{{ route('login') }}" class="text-start">
                                     @csrf
                                     @if (Session::has('status'))
