@@ -29,6 +29,7 @@ Route::get('/cash/istanbul/{key?}', [IstanbulCashController::class, 'indexApi'])
 Route::get('/cash/vanuatu/{key?}', [VanuatuCashController::class, 'indexApi']);
 
 Route::get('/dubai/{key?}', [DubaiController::class, 'indexApi']);
+Route::delete('/dubai/{id}', [DubaiController::class, 'destroy']);
 Route::get('/istanbul/{key?}', [TurkeyController::class, 'indexApi']);
 Route::get('/vanuatu/{key?}', [VanuatuController::class, 'indexApi']);
 

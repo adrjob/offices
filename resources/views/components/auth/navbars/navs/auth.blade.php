@@ -46,24 +46,7 @@
                   
                 </div>
             </div>
-            <ul class="navbar-nav  align-items-center">
-                <!-- <li class="nav-item">
-                    <a href="{{ route('illustration-sign-in') }}" class="nav-link text-body p-0 position-relative"
-                        target="_blank">
-                        <i class="material-icons me-sm-1">
-                            account_circle
-                        </i>
-                    </a>
-                </li>
-                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                        <div class="sidenav-toggler-inner">
-                            <i class="sidenav-toggler-line"></i>
-                            <i class="sidenav-toggler-line"></i>
-                            <i class="sidenav-toggler-line"></i>
-                        </div>
-                    </a>
-                </li> -->
+            <ul class="navbar-nav  align-items-center">               
                 <li class="nav-item px-3">
                     <a href="javascript:;" class="nav-link text-body p-0">
                     <a class="nav-link text-white " href="{{ route('logout') }}">
@@ -74,10 +57,7 @@
                                     style="background-color: #9a752f !important; border-radius: 10px; color: white; padding: 10px"
                                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         Logout </span>
-                                </a>
-                        <!-- <i class="material-icons fixed-plugin-button-nav cursor-pointer">
-                            settings
-                        </i> -->
+                                </a>                     
                     </a>
                 </li>                
             </ul>

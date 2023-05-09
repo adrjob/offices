@@ -16,6 +16,8 @@ use App\Http\Controllers\TurkeyController;
 use App\Http\Controllers\IstanbulCashController;
 use App\Http\Controllers\VanuatuController;
 use App\Http\Controllers\VanuatuCashController;
+use App\Http\Controllers\EditInvoicesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,7 @@ use App\Http\Controllers\VanuatuCashController;
 Route::get('/', function () {
     return redirect('sign-in');
 })->middleware('guest');
+
 
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
@@ -52,6 +55,10 @@ Route::get('verify', function () {
 Route::get('reset-password/{token}', function ($token) {
 	return view('sessions.password.reset', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
+
+
+Route::post('edit-invoice/{country?}/{id?}', [EditInvoicesController::class, 'update'])->middleware('auth')->name('edit.invoice.update');
+Route::get('edit-invoice/{id}', [EditInvoicesController::class, 'index'])->middleware('auth')->name('edit.invoice');
 
 Route::get('cash/dubai', [DubaiCashController::class, 'index'])->middleware('auth')->name('cash.dubai');
 Route::post('cash/dubai/store', [DubaiCashController::class, 'store'])->middleware('auth')->name('cash.dubai.store');
@@ -112,216 +119,216 @@ Route::get('edit-user/{id}',[UserManagementController::class, 'edit'])->middlewa
 Route::post('edit-user/{id}',[UserManagementController::class, 'update'])->middleware('auth');
 Route::post('users-management/{id}',[UserManagementController::class, 'destroy'])->middleware('auth')->name('delete.user');
 
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('charts', function () {
-		return view('pages.charts');
-	})->name('charts');
+// Route::group(['middleware' => 'auth'], function () {
+// 	Route::get('charts', function () {
+// 		return view('pages.charts');
+// 	})->name('charts');
 
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
+// 	Route::get('notifications', function () {
+// 		return view('pages.notifications');
+// 	})->name('notifications');
 
-	Route::get('pricing-page', function () {
-		return view('pages.pricing-page');
-	})->name('pricing-page');
+// 	Route::get('pricing-page', function () {
+// 		return view('pages.pricing-page');
+// 	})->name('pricing-page');
 
-    Route::get('rtl', function () {
-		return view('pages.rtl');
-	})->name('rtl');
+//     Route::get('rtl', function () {
+// 		return view('pages.rtl');
+// 	})->name('rtl');
 
-	Route::get('sweet-alerts', function () {
-		return view('pages.sweet-alerts');
-	})->name('sweet-alerts');
+// 	Route::get('sweet-alerts', function () {
+// 		return view('pages.sweet-alerts');
+// 	})->name('sweet-alerts');
 
-	Route::get('widgets', function () {
-		return view('pages.widgets');
-	})->name('widgets');
+// 	Route::get('widgets', function () {
+// 		return view('pages.widgets');
+// 	})->name('widgets');
 
-	Route::get('vr-default', function () {
-		return view('pages.vr.vr-default');
-	})->name('vr-default');
+// 	Route::get('vr-default', function () {
+// 		return view('pages.vr.vr-default');
+// 	})->name('vr-default');
 
-	Route::get('vr-info', function () {
-		return view("pages.vr.vr-info");
-	})->name('vr-info');
+// 	Route::get('vr-info', function () {
+// 		return view("pages.vr.vr-info");
+// 	})->name('vr-info');
 
-	Route::get('new-user', function () {
-		return view('pages.users.new-user');
-	})->name('new-user');
+// 	Route::get('new-user', function () {
+// 		return view('pages.users.new-user');
+// 	})->name('new-user');
 
-    Route::get('reports', function () {
-		return view('pages.users.reports');
-	})->name('reports');
+//     Route::get('reports', function () {
+// 		return view('pages.users.reports');
+// 	})->name('reports');
 
-    Route::get('general', function () {
-		return view('pages.projects.general');
-	})->name('general');
+//     Route::get('general', function () {
+// 		return view('pages.projects.general');
+// 	})->name('general');
 
-	Route::get('new-project', function () {
-		return view('pages.projects.new-project');
-	})->name('new-project');
+// 	Route::get('new-project', function () {
+// 		return view('pages.projects.new-project');
+// 	})->name('new-project');
 
-	Route::get('timeline', function () {
-		return view('pages.projects.timeline');
-	})->name('timeline');
+// 	Route::get('timeline', function () {
+// 		return view('pages.projects.timeline');
+// 	})->name('timeline');
 
-	Route::get('overview', function () {
-		return view('pages.profile.overview');
-	})->name('overview');
+// 	Route::get('overview', function () {
+// 		return view('pages.profile.overview');
+// 	})->name('overview');
 
-	Route::get('projects', function () {
-		return view("pages.profile.projects");
-	})->name('projects');
+// 	Route::get('projects', function () {
+// 		return view("pages.profile.projects");
+// 	})->name('projects');
 
-	Route::get('billing', function () {
-		return view('pages.account.billing');
-	})->name('billing');
+// 	Route::get('billing', function () {
+// 		return view('pages.account.billing');
+// 	})->name('billing');
 
-    Route::get('invoice', function () {
-		return view('pages.account.invoice');
-	})->name('invoice');
+//     Route::get('invoice', function () {
+// 		return view('pages.account.invoice');
+// 	})->name('invoice');
 
-    Route::get('security', function () {
-		return view('pages.account.security');
-	})->name('security');
+//     Route::get('security', function () {
+// 		return view('pages.account.security');
+// 	})->name('security');
 
-	Route::get('settings', function () {
-		return view('pages.account.settings');
-	})->name('settings');
+// 	Route::get('settings', function () {
+// 		return view('pages.account.settings');
+// 	})->name('settings');
 
-	Route::get('referral', function () {
-		return view('ecommerce.referral');
-	})->name('referral');
+// 	Route::get('referral', function () {
+// 		return view('ecommerce.referral');
+// 	})->name('referral');
 
-	Route::get('details', function () {
-		return view('ecommerce.orders.details');
-	})->name('details');
+// 	Route::get('details', function () {
+// 		return view('ecommerce.orders.details');
+// 	})->name('details');
 
-	Route::get('list', function () {
-		return view("ecommerce.orders.list");
-	})->name('list');
+// 	Route::get('list', function () {
+// 		return view("ecommerce.orders.list");
+// 	})->name('list');
 
-	Route::get('edit-product', function () {
-		return view('ecommerce.products.edit-product');
-	})->name('edit-product');
+// 	Route::get('edit-product', function () {
+// 		return view('ecommerce.products.edit-product');
+// 	})->name('edit-product');
 
-    Route::get('new-product', function () {
-		return view('ecommerce.products.new-product');
-	})->name('new-product');
+//     Route::get('new-product', function () {
+// 		return view('ecommerce.products.new-product');
+// 	})->name('new-product');
 
-    Route::get('product-page', function () {
-		return view('ecommerce.products.product-page');
-	})->name('product-page');
+//     Route::get('product-page', function () {
+// 		return view('ecommerce.products.product-page');
+// 	})->name('product-page');
 
-    Route::get('products-list', function () {
-		return view('ecommerce.products.products-list');
-	})->name('products-list');
+//     Route::get('products-list', function () {
+// 		return view('ecommerce.products.products-list');
+// 	})->name('products-list');
 
-	Route::get('automotive', function () {
-		return view('dashboard.automotive');
-	})->name('automotive');
+// 	Route::get('automotive', function () {
+// 		return view('dashboard.automotive');
+// 	})->name('automotive');
 
-	Route::get('discover', function () {
-		return view('dashboard.discover');
-	})->name('discover');
+// 	Route::get('discover', function () {
+// 		return view('dashboard.discover');
+// 	})->name('discover');
 
-	Route::get('sales', function () {
-		return view('dashboard.sales');
-	})->name('sales');
+// 	Route::get('sales', function () {
+// 		return view('dashboard.sales');
+// 	})->name('sales');
 
-	Route::get('smart-home', function () {
-		return view("dashboard.smart-home");
-	})->name('smart-home');
+// 	Route::get('smart-home', function () {
+// 		return view("dashboard.smart-home");
+// 	})->name('smart-home');
 
-	Route::get('404', function () {
-		return view('errors.404');
-	})->name('404');
+// 	Route::get('404', function () {
+// 		return view('errors.404');
+// 	})->name('404');
 
-    Route::get('500', function () {
-		return view('errors.500');
-	})->name('500');
+//     Route::get('500', function () {
+// 		return view('errors.500');
+// 	})->name('500');
 
-    Route::get('basic-lock', function () {
-		return view('authentication.lock.basic');
-	})->name('basic-lock');
+//     Route::get('basic-lock', function () {
+// 		return view('authentication.lock.basic');
+// 	})->name('basic-lock');
 
-    Route::get('cover-lock', function () {
-		return view('authentication.lock.cover');
-	})->name('cover-lock');
+//     Route::get('cover-lock', function () {
+// 		return view('authentication.lock.cover');
+// 	})->name('cover-lock');
 
-    Route::get('illustration-lock', function () {
-		return view('authentication.lock.illustration');
-	})->name('illustration-lock');
+//     Route::get('illustration-lock', function () {
+// 		return view('authentication.lock.illustration');
+// 	})->name('illustration-lock');
 
-    Route::get('basic-reset', function () {
-		return view('authentication.reset.basic');
-	})->name('basic-reset');
+//     Route::get('basic-reset', function () {
+// 		return view('authentication.reset.basic');
+// 	})->name('basic-reset');
 
-    Route::get('cover-reset', function () {
-		return view('authentication.reset.cover');
-	})->name('cover-reset');
+//     Route::get('cover-reset', function () {
+// 		return view('authentication.reset.cover');
+// 	})->name('cover-reset');
 
-    Route::get('illustration-reset', function () {
-		return view('authentication.reset.illustration');
-	})->name('illustration-reset');
+//     Route::get('illustration-reset', function () {
+// 		return view('authentication.reset.illustration');
+// 	})->name('illustration-reset');
 
-    Route::get('basic-sign-in', function () {
-		return view('authentication.sign-in.basic');
-	})->name('basic-sign-in');
+//     Route::get('basic-sign-in', function () {
+// 		return view('authentication.sign-in.basic');
+// 	})->name('basic-sign-in');
 
-    Route::get('cover-sign-in', function () {
-		return view('authentication.sign-in.cover');
-	})->name('cover-sign-in');
+//     Route::get('cover-sign-in', function () {
+// 		return view('authentication.sign-in.cover');
+// 	})->name('cover-sign-in');
 
-    Route::get('illustration-sign-in', function () {
-		return view('authentication.sign-in.illustration');
-	})->name('illustration-sign-in');
+//     Route::get('illustration-sign-in', function () {
+// 		return view('authentication.sign-in.illustration');
+// 	})->name('illustration-sign-in');
 
-    Route::get('basic-sign-up', function () {
-		return view('authentication.sign-up.basic');
-	})->name('basic-sign-up');
+//     Route::get('basic-sign-up', function () {
+// 		return view('authentication.sign-up.basic');
+// 	})->name('basic-sign-up');
 
-    Route::get('cover-sign-up', function () {
-		return view('authentication.sign-up.cover');
-	})->name('cover-sign-up');
+//     Route::get('cover-sign-up', function () {
+// 		return view('authentication.sign-up.cover');
+// 	})->name('cover-sign-up');
 
-    Route::get('illustration-sign-up', function () {
-		return view('authentication.sign-up.illustration');
-	})->name('illustration-sign-up');
+//     Route::get('illustration-sign-up', function () {
+// 		return view('authentication.sign-up.illustration');
+// 	})->name('illustration-sign-up');
 
-    Route::get('basic-verification', function () {
-		return view('authentication.verification.basic');
-	})->name('basic-verification');
+//     Route::get('basic-verification', function () {
+// 		return view('authentication.verification.basic');
+// 	})->name('basic-verification');
 
-    Route::get('cover-verification', function () {
-		return view('authentication.verification.cover');
-	})->name('cover-verification');
+//     Route::get('cover-verification', function () {
+// 		return view('authentication.verification.cover');
+// 	})->name('cover-verification');
 
-    Route::get('illustration-verification', function () {
-		return view('authentication.verification.illustration');
-	})->name('illustration-verification');
+//     Route::get('illustration-verification', function () {
+// 		return view('authentication.verification.illustration');
+// 	})->name('illustration-verification');
 
-    Route::get('calendar', function () {
-		return view('applications.calendar');
-	})->name('calendar');
+//     Route::get('calendar', function () {
+// 		return view('applications.calendar');
+// 	})->name('calendar');
 
-    Route::get('crm', function () {
-		return view('applications.crm');
-	})->name('crm');
+//     Route::get('crm', function () {
+// 		return view('applications.crm');
+// 	})->name('crm');
 
-    Route::get('datatables', function () {
-		return view('applications.datatables');
-	})->name('datatables');
+//     Route::get('datatables', function () {
+// 		return view('applications.datatables');
+// 	})->name('datatables');
 
-    Route::get('kanban', function () {
-		return view('applications.kanban');
-	})->name('kanban');
+//     Route::get('kanban', function () {
+// 		return view('applications.kanban');
+// 	})->name('kanban');
 
-    Route::get('stats', function () {
-		return view('applications.stats');
-	})->name('stats');
+//     Route::get('stats', function () {
+// 		return view('applications.stats');
+// 	})->name('stats');
 
-    Route::get('wizard', function () {
-		return view('applications.wizard');
-	})->name('wizard');
-});
+//     Route::get('wizard', function () {
+// 		return view('applications.wizard');
+// 	})->name('wizard');
+// });

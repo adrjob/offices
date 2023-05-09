@@ -71,12 +71,17 @@ class DubaiController extends Controller
         $attributes = request()->validate([
             'description' => 'required|',
             'user_id' =>'required|',            
-            'dubaiPath' => 'required|',  
+            // 'dubaiPath' => 'required|',  
             'total' => 'required|'          
         ]);
-        // $name = request()->dubaiPath;        
-        $path = request()->dubaiPath->store('dubai_invoices', 'public');
-        $attributes['dubaiPath'] = "$path";
+        
+        if(request()->dubaiPath) {
+            $attributes['status'] = 0;
+            $path = request()->dubaiPath->store('dubai_invoices', 'public');
+            $attributes['dubaiPath'] = "$path";
+        } else {
+            $attributes['status'] = 1; 
+        }                
 
 
         Dubai::create($attributes);
@@ -124,8 +129,14 @@ class DubaiController extends Controller
      * @param  \App\Models\Dubai  $dubai
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dubai $dubai)
+    public function destroy(Dubai $dubai, $id)
     {
-        //
+        $dubai = Dubai::findOrFail($id);
+        if($dubai) {
+        $dubai->delete(); 
+        } else {
+            return response()->json(error);
+        }            
+        return response()->json(null); 
     }
 }

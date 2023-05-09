@@ -38,7 +38,8 @@
   <!-- Nucleo Icons -->
   <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
   <link href="{{ asset('assets') }}/css/nucleo-svg.css" rel="stylesheet" />
-  <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"; rel="stylesheet"/>
+  
+  <!-- <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"; rel="stylesheet"/> -->
   <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
   
   <!-- Font Awesome Icons -->

@@ -78,7 +78,7 @@ class TurkeyController extends Controller
 
         Turkey::create($attributes);
 
-        return redirect('office/turkey')->withStatus('Invoice successfully created.');
+        return redirect('office/istanbul')->withStatus('Invoice successfully created.');
     }
 
     /**
