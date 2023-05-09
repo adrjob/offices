@@ -41,7 +41,7 @@
                                 <h4>Edit Invoice</h4>                    
                             </div>
                             <div class="card-body">
-                            <form role="form text-left" autocomplete="off"  method="POST" action="{{ route('edit.invoice.update') }}/dubai" enctype="multipart/form-data">
+                            <form role="form text-left" autocomplete="off"  method="POST" action="{{ route('edit.invoice.update', 'dubai') }}" enctype="multipart/form-data">
                                 @csrf
                             
                             <div class="row">
