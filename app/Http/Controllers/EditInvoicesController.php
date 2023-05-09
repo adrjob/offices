@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\EditInvoices;
 use App\Models\Dubai;
+use App\Models\DubaiCash;
 use App\Models\Turkey;
+use App\Models\TurkeyCash;
 use App\Models\Vanuatu;
+use App\Models\VanuatuCash;
 use Illuminate\Http\Request;
 
 
@@ -34,7 +37,27 @@ class EditInvoicesController extends Controller
 
             $data = Vanuatu::where('id', $request->id)->get();        
             return view('offices.turkey.edit', compact('display', 'data', 'country'));        
+        }        
+    }
 
+    public function indexA(Request $request)
+    {        
+        $display = "block";            
+        $country = request()->country;        
+        if($country == 'dubai') {
+            
+            $data = DubaiCash::where('id', $request->id)->get();        
+            return view('cash.dubai.edit', compact('display', 'data', 'country'));        
+
+        } elseif($country == 'istanbul') {
+
+            $data = TurkeyCash::where('id', $request->id)->get();        
+            return view('cash.istanbul.edit', compact('display', 'data', 'country'));        
+            
+        } else {
+
+            $data = VanuatuCash::where('id', $request->id)->get();        
+            return view('cash.vanuatu.edit', compact('display', 'data', 'country'));        
         }        
     }
 
@@ -131,6 +154,51 @@ class EditInvoicesController extends Controller
         }      
                 
         return redirect()->back()->withStatus('Invoice successfully updated.');
+    }
+
+    public function updateB(Request $request, EditInvoices $editInvoices)
+    {
+        $country = $request->country;        
+        $id = $request->my_id;       
+        
+        if($request->dubaiPath) {
+            $path = request()->dubaiPath->store('dubai_invoices', 'public');
+            if($country == 'dubai') {
+                DubaiCash::where('id', $id)->update(
+                    [
+                        'receive' => $request->input('receive'),
+                        'spend'=>$request->input('spend'),
+                        'dubaiPath'=>$path, 
+                        'status' => 0,
+                    ]);
+            } elseif($country == 'istanbul') {
+                TurkeyCash::where('id', $id)->update(
+                    [
+                        'receive' => $request->input('receive'),
+                        'spend'=>$request->input('spend'),
+                        'dubaiPath'=>$path, 
+                        'status' => 0,
+                    ]);
+            } else {
+                VanuatuCash::where('id', $id)->update(
+                    [
+                        'receive' => $request->input('receive'),
+                        'spend'=>$request->input('spend'),
+                        'dubaiPath'=>$path, 
+                        'status' => 0,
+                    ]);
+            }         
+        } else {
+            if($country == 'dubai') {
+                DubaiCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
+            } elseif($country == 'istanbul') {
+                TurkeyCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
+            } else {
+                VanuatuCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
+            }
+        }      
+                
+        return redirect()->back()->withStatus('Successfully updated.');
     }
 
     /**

@@ -17,13 +17,25 @@ class DubaiCashController extends Controller
      */
     public function index()
     {
+
         $au = auth()->user();
         
-        if($au->isDubai()|| $au->isAdmin()) {            
-            return view('cash.dubai.index', ['dubai' => DubaiCash::get()]);     
-            $cas = DubaiCash::get();            
+        if($au->isDubai()|| $au->isAdmin()) {
+            $now = Carbon::now();            
+            $users = DubaiCash::whereMonth('created_at', '=', $now->month)->get();        
+            $total = $users->sum('total');                
+            // return view('offices.dubai.index', ['dubai' => Dubai::whereMonth('created_at', '=', $now->month)->get(), 'total' => $total]);     
+            return view('cash.dubai.index', ['dubai' => DubaiCash::get(), 'total' => $total]);     
         }
-        abort(403);        
+        abort(403);
+
+        // $au = auth()->user();
+        
+        // if($au->isDubai()|| $au->isAdmin()) {            
+        //     return view('cash.dubai.index', ['dubai' => DubaiCash::get()]);     
+        //     $cas = DubaiCash::get();            
+        // }
+        // abort(403);        
     }
 
     /**  

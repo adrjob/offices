@@ -175,26 +175,42 @@
                 },               
                 {
                     targets: [6],
-                    render: function (data, type, row) {
-                        if (row.status = 0) {
-                            return "view";
-                        } else {
-                            return "No File";
-                        }
+                    // render: function (data, type, row) {
+                    //     if (row.status = 0) {
+                    //         return "view";
+                    //     } else {
+                    //         return "No File";
+                    //     }
 
-                    }
+                    // }
+                    render: function (data, type, row) {    
+                    if(row.status === 0) {
+                        var fazerUpload = '<label for="file-input"><i class="material-icons" style="padding-right: 20px !important; color: green !important">upload</i><div class="ripple-container"></div></label><input id="file-input" type="file" style="display: none"/>'
+                    } else {
+                        var fazerUpload = '<label for="file-input"><i class="material-icons" style="padding-right: 20px !important; color: red !important">upload</i><div class="ripple-container"></div></label><input id="file-input" type="file" style="display: none"/>'
+                    }                
+
+
+                    // var editar = '<a data-bs-toggle="modal" data-bs-target="#modalEdit" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
+                    // var editar = '<a onclick="editRow('+row.id+', '+row.status+', '+row.description+', '+row.dubaiPath+')" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
+                    // onclick="editRow('+row.id+')"
+                    var editar = '<a href="/edit-cash/'+row.id+'/dubai" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
+
+                    var abreform = '<form>'                    
+                    var excluir = '<a rel="tooltip" class="btn bg-gradient-danger btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">close</i><div class="ripple-container"></div></a>';                    
+                    var ver = '<a rel="tooltip" class="btn bg-gradient-info btn-sm myCustomButton" href="/storage/'+row.dubaiPath+'" target="_blank"><i class="material-icons">visibility</i><div class="ripple-container"></div></a>';
+                    var fechaform = '</form>'                    
+                    if(row.status == 0) {
+                        var appInit = abreform + ver + editar  + excluir + fechaform                                          
+                    } else {
+                        var appInit = abreform + editar  + excluir + fechaform                                                              
+                    }                 
+                    return (                                  
+                        appInit
+                    );
+                }
                 },
-                // {
-                //     targets: '_all',
-                //     render: function (data, type, row) {
-                //         if (type === 'display') {
-                //             return isNaN(data) && moment(data).isValid() ?
-                //                 moment(data).format('MM/DD/YYYY', 'YYYY/MM/DD')
-                //                 : data;
-                //         }
-                //         return data;
-                //     }
-                // }
+               
             ],
             "footerCallback": function (tfoot, data, start, end, display) {
                 var api = this.api();
