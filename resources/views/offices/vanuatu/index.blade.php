@@ -1,7 +1,7 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
     <x-auth.navbars.sidebar activePage="vanuatu" activeItem="vanuatu" activeSubitem="">
     </x-auth.navbars.sidebar>    
-    <x-layout country="Vanuatu" action="/office/vanuatu/store"/>
+    <x-layout country="Invoices Vanuatu" action="/office/vanuatu/store"/>        
     <x-plugins></x-plugins>
     @push('js')
     <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>    
@@ -10,8 +10,8 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     
-    <script>
-    
+    <script type="text/javascript">
+
     function delete_row(id) {
         // var lnk = "http://yoursite.com/delete";
         if(confirm("Are you sure you want to delete this Record?")){
@@ -32,6 +32,10 @@
         }
     }
 
+    function editRow(id) {
+        
+    }
+
     var table = $('#example').DataTable({
         ajax: '/api/vanuatu/',
         // searching: false,
@@ -44,14 +48,30 @@
         columnDefs: [
             {
                 targets: [4],
-                render: function (data, type, row) {                    
-                    var abreform = '<form>'
-                    var primeiro = '<a rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">edit</i><div class="ripple-container"></div></a>';
-                    var segundo = '<a rel="tooltip" class="btn bg-gradient-danger btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">close</i><div class="ripple-container"></div></a>';
-                    var terceiro = '<a rel="tooltip" class="btn bg-gradient-info btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">upload</i><div class="ripple-container"></div></a>';
+                render: function (data, type, row) {    
+                    if(row.status === 0) {
+                        var fazerUpload = '<label for="file-input"><i class="material-icons" style="padding-right: 20px !important; color: green !important">upload</i><div class="ripple-container"></div></label><input id="file-input" type="file" style="display: none"/>'
+                    } else {
+                        var fazerUpload = '<label for="file-input"><i class="material-icons" style="padding-right: 20px !important; color: red !important">upload</i><div class="ripple-container"></div></label><input id="file-input" type="file" style="display: none"/>'
+                    }                
+
+
+                    // var editar = '<a data-bs-toggle="modal" data-bs-target="#modalEdit" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
+                    // var editar = '<a onclick="editRow('+row.id+', '+row.status+', '+row.description+', '+row.dubaiPath+')" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
+                    // onclick="editRow('+row.id+')"
+                    var editar = '<a href="/edit-invoice/'+row.id+'" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
+
+                    var abreform = '<form>'                    
+                    var excluir = '<a rel="tooltip" class="btn bg-gradient-danger btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">close</i><div class="ripple-container"></div></a>';                    
+                    var ver = '<a rel="tooltip" class="btn bg-gradient-info btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">visibility</i><div class="ripple-container"></div></a>';
                     var fechaform = '</form>'                    
-                    return (   
-                        abreform + primeiro + segundo + terceiro + fechaform                                          
+                    if(row.status === 0) {
+                           var appInit = abreform + ver + editar  + excluir + fechaform                                          
+                        } else {
+                            var appInit = abreform + editar  + excluir + fechaform                                                              
+                        }                 
+                    return (                                  
+                        appInit
                     );
                 }
             },
@@ -79,9 +99,20 @@
     })
 
     $('#search-month').on('change', function () {
-        table.ajax.url('/api/vanuatu/' + this.value ).load();                
-    });        
+        table.ajax.url('/api/instabul/' + this.value ).load();                
+    });       
+    
+    
+var input = document.getElementsByTagName('input')[1];
+input.onclick = function () {
+  this.value = null;
+};
+  
+input.onchange = function () {
+  console.log(this.value);
+};
+  
+
     </script>
     @endpush
 </x-page-template>
-
