@@ -57,8 +57,8 @@ Route::get('reset-password/{token}', function ($token) {
 })->middleware('guest')->name('password.reset');
 
 
-Route::post('edit-invoice/{country?}/{id?}', [EditInvoicesController::class, 'update'])->middleware('auth')->name('edit.invoice.update');
-Route::get('edit-invoice/{id}', [EditInvoicesController::class, 'index'])->middleware('auth')->name('edit.invoice');
+Route::post('edit-invoice/{country?}', [EditInvoicesController::class, 'update'])->middleware('auth')->name('edit.invoice.update');
+Route::get('edit-invoice/{id}/{country}', [EditInvoicesController::class, 'index'])->middleware('auth')->name('edit.invoice');
 
 Route::get('cash/dubai', [DubaiCashController::class, 'index'])->middleware('auth')->name('cash.dubai');
 Route::post('cash/dubai/store', [DubaiCashController::class, 'store'])->middleware('auth')->name('cash.dubai.store');

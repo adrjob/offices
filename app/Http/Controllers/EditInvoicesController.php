@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\EditInvoices;
 use App\Models\Dubai;
+use App\Models\Turkey;
+use App\Models\Vanuatu;
 use Illuminate\Http\Request;
 
 
@@ -15,12 +17,25 @@ class EditInvoicesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $display = "block";        
-        $data = Dubai::where('id', $request->id)->get();
-        // var_dump($data);
-        // exit();
-        return view('offices.dubai.edit', compact('display', 'data'));        
+    {        
+        $display = "block";            
+        $country = request()->country;
+        if($country == 'dubai') {
+            
+            $data = Dubai::where('id', $request->id)->get();        
+            return view('offices.dubai.edit', compact('display', 'data'));        
+
+        } elseif($country == 'istanbul') {
+
+            $data = Turkey::where('id', $request->id)->get();        
+            return view('offices.turkey.edit', compact('display', 'data'));        
+            
+        } else {
+
+            $data = Vanuatu::where('id', $request->id)->get();        
+            return view('offices.turkey.edit', compact('display', 'data'));        
+
+        }        
     }
 
     /**

@@ -59,7 +59,7 @@
                     // var editar = '<a data-bs-toggle="modal" data-bs-target="#modalEdit" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
                     // var editar = '<a onclick="editRow('+row.id+', '+row.status+', '+row.description+', '+row.dubaiPath+')" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
                     // onclick="editRow('+row.id+')"
-                    var editar = '<a href="/edit-invoice/'+row.id+'" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
+                    var editar = '<a href="/edit-invoice/'+row.id+'/istanbul" rel="tooltip" class="btn bg-gradient-success btn-sm myCustomButton"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';                    
 
                     var abreform = '<form>'                    
                     var excluir = '<a rel="tooltip" class="btn bg-gradient-danger btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">close</i><div class="ripple-container"></div></a>';                    
