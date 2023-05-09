@@ -68,12 +68,17 @@ class VanuatuController extends Controller
         $attributes = request()->validate([
             'description' => 'required|',
             'user_id' =>'required|',            
-            'dubaiPath' => 'required|',  
-            'total' => 'required|'                    
+            // 'dubaiPath' => 'required|',  
+            'total' => 'required|'          
         ]);
-        // $name = request()->dubaiPath;        
-        $path = request()->dubaiPath->store('vanuatu_invoices', 'public');
-        $attributes['dubaiPath'] = "$path";
+        
+        if(request()->dubaiPath) {
+            $attributes['status'] = 0;
+            $path = request()->dubaiPath->store('vanuatu_invoices', 'public');
+            $attributes['dubaiPath'] = "$path";
+        } else {
+            $attributes['status'] = 1; 
+        }                
 
 
         Vanuatu::create($attributes);

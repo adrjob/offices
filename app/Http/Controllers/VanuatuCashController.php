@@ -21,7 +21,7 @@ class VanuatuCashController extends Controller
         
         if($au->isVanuatu()|| $au->isAdmin()) {            
             return view('cash.vanuatu.index', ['dubai' => VanuatuCash::get()]);     
-            $cas = IstanbulCash::get();            
+            $cas = VanuatuCash::get();            
         }
         abort(403);        
     }

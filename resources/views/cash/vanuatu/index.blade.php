@@ -1,5 +1,5 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
-    <x-auth.navbars.sidebar activePage="cash_vanuatu" activeItem="cash_vanuatu" activeSubitem="">
+    <x-auth.navbars.sidebar activePage="vanuatu_cash" activeItem="vanuatu_cash" activeSubitem="">
     </x-auth.navbars.sidebar>    
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
