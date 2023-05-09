@@ -63,7 +63,7 @@
 
                     var abreform = '<form>'                    
                     var excluir = '<a rel="tooltip" class="btn bg-gradient-danger btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">close</i><div class="ripple-container"></div></a>';                    
-                    var ver = '<a rel="tooltip" class="btn bg-gradient-info btn-sm myCustomButton" href="#" onclick="delete_row(' + row.id + ')" data-original-title=""title=""><i class="material-icons">visibility</i><div class="ripple-container"></div></a>';
+                    var ver = '<a rel="tooltip" class="btn bg-gradient-info btn-sm myCustomButton" href="/storage/'+row.dubaiPath+'" target="_blank"><i class="material-icons">visibility</i><div class="ripple-container"></div></a>';
                     var fechaform = '</form>'                    
                     if(row.status === 0) {
                            var appInit = abreform + ver + editar  + excluir + fechaform                                          
