@@ -41,9 +41,9 @@
                                 <h4>Edit Invoice</h4>                    
                             </div>
                             <div class="card-body">
-                            <form role="form text-left" autocomplete="off"  method="POST" action="{{ route('edit.invoice.update') }}" enctype="multipart/form-data">
+                            <form role="form text-left" autocomplete="off"  method="POST" action="{{ route('edit.invoice.update', 'instanbul') }}" enctype="multipart/form-data">
                                 @csrf
-                            <!-- <form action="{{ route('edit.invoice.update') }}"> -->
+                            
                             <div class="row">
                                 <div class="col-md-6">
                                 <div class="input-group input-group-static my-3">
@@ -73,6 +73,7 @@
                                 </div>
                             </div>
                             <input type="hidden" name="my_id" value="{{$data[0]->id}}">
+                            <input type="hidden" name="country" value="istanbul">
                             <button type="submit" class="btn btn-vancis mt-3">Save</button>
                             </form>
                             </div>

@@ -19,21 +19,21 @@ class EditInvoicesController extends Controller
     public function index(Request $request)
     {        
         $display = "block";            
-        $country = request()->country;
+        $country = request()->country;        
         if($country == 'dubai') {
             
             $data = Dubai::where('id', $request->id)->get();        
-            return view('offices.dubai.edit', compact('display', 'data'));        
+            return view('offices.dubai.edit', compact('display', 'data', 'country'));        
 
         } elseif($country == 'istanbul') {
 
             $data = Turkey::where('id', $request->id)->get();        
-            return view('offices.turkey.edit', compact('display', 'data'));        
+            return view('offices.turkey.edit', compact('display', 'data', 'country'));        
             
         } else {
 
             $data = Vanuatu::where('id', $request->id)->get();        
-            return view('offices.turkey.edit', compact('display', 'data'));        
+            return view('offices.turkey.edit', compact('display', 'data', 'country'));        
 
         }        
     }
@@ -90,26 +90,26 @@ class EditInvoicesController extends Controller
      */
     public function update(Request $request, EditInvoices $editInvoices)
     {
+        $country = $request->country;        
         $id = $request->my_id;       
         
         if($request->dubaiPath) {
             $path = request()->dubaiPath->store('dubai_invoices', 'public');
-            Dubai::where('id', $id)
-            ->update(
-                    [
-                        'description' => $request->input('description'),
-                        'total'=>$request->input('total'),
-                        'dubaiPath'=>$path
-                    ]
-                );
+            if($country == 'dubai') {
+                Dubai::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total'),'dubaiPath'=>$path]);
+            } elseif($country == 'istanbul') {
+                Turkey::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total'),'dubaiPath'=>$path]);
+            } else {
+                Vanuatu::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total'),'dubaiPath'=>$path]);
+            }         
         } else {
-            $Dubai::where('id', $id)
-            ->update(
-                    [
-                        'description' => $request->input('description'),
-                        'total'=>$request->input('total')                        
-                    ]
-                );
+            if($country == 'dubai') {
+                Dubai::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total')]);
+            } elseif($country == 'istanbul') {
+                Turkey::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total')]);
+            } else {
+                Vanuatu::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total')]);
+            }
         }      
                 
         return redirect()->back()->withStatus('Invoice successfully updated.');
