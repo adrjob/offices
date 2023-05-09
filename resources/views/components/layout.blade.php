@@ -35,10 +35,10 @@
                 <div class="col-12">
                     <div class="card">
                     <div class="card-header">
-                            <h5 class="mb-0">{{ $country }}</h5>     
-                            <div>
-                            <label class="ms-0" for="search-month">Search By Month</label>    
-                            <select class="form-control" name="search-month" id="search-month">
+                            <h5 class="mb-0">{{ $country }}</h5>   <br>
+                            <div class="input-group input-group-static mb-4 w-10">
+                                <label for="search-month" class="ms-0" style="color: black">Example select</label>
+                                <select class="form-control" name="search-month" id="search-month">
                                 <option value="01">1 - Jan</option>
                                 <option value="02">2 - Feb</option>
                                 <option value="03">3 - Mar</option>
@@ -51,8 +51,8 @@
                                 <option value="10">10 - Oct</option>
                                 <option value="11">11 - Nov</option>
                                 <option value="12">12 - Dez</option>
-                            </select>
-                            </div>                                                        
+                                </select>
+                            </div>                                                                          
                         </div>
                         <x-modal-edit title="Edit Dubai" action="test" dataURL="ok"/>
                         <x-modal dataURL="" action="{{ $action }}" title="{{ $country }}" />

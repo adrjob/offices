@@ -6,7 +6,7 @@ use App\Models\EditInvoices;
 use App\Models\Dubai;
 use App\Models\DubaiCash;
 use App\Models\Turkey;
-use App\Models\TurkeyCash;
+use App\Models\IstanbulCash;
 use App\Models\Vanuatu;
 use App\Models\VanuatuCash;
 use Illuminate\Http\Request;
@@ -51,7 +51,7 @@ class EditInvoicesController extends Controller
 
         } elseif($country == 'istanbul') {
 
-            $data = TurkeyCash::where('id', $request->id)->get();        
+            $data = IstanbulCash::where('id', $request->id)->get();        
             return view('cash.istanbul.edit', compact('display', 'data', 'country'));        
             
         } else {
@@ -172,7 +172,7 @@ class EditInvoicesController extends Controller
                         'status' => 0,
                     ]);
             } elseif($country == 'istanbul') {
-                TurkeyCash::where('id', $id)->update(
+                IstanbulCash::where('id', $id)->update(
                     [
                         'receive' => $request->input('receive'),
                         'spend'=>$request->input('spend'),
@@ -192,7 +192,7 @@ class EditInvoicesController extends Controller
             if($country == 'dubai') {
                 DubaiCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
             } elseif($country == 'istanbul') {
-                TurkeyCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
+                IstanbulCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
             } else {
                 VanuatuCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
             }
