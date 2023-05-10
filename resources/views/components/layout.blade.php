@@ -37,7 +37,7 @@
                     <div class="card-header">
                             <h5 class="mb-0">{{ $country }}</h5>   <br>
                             <div class="input-group input-group-static mb-4 w-10">
-                                <label for="search-month" class="ms-0" style="color: black">Example select</label>
+                                <label for="search-month" class="ms-0" style="color: black">Search by Month</label>
                                 <select class="form-control" name="search-month" id="search-month">
                                 <option value="01">1 - Jan</option>
                                 <option value="02">2 - Feb</option>

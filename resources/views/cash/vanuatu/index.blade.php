@@ -30,8 +30,9 @@
                     <div class="card">
                     <div class="card-header">
                             <h5 class="mb-0">Cash Vanuatu</h5>     
-                            <div>
-                            <label class="ms-0" for="search-month">Search By Month</label>    
+                            <br>
+                            <div class="input-group input-group-static mb-4 w-10">
+                                <label for="search-month" class="ms-0" style="color: black">Search by Month</label>
                             <select class="form-control" name="search-month" id="search-month">
                                 <option value="01">1 - Jan</option>
                                 <option value="02">2 - Feb</option>
