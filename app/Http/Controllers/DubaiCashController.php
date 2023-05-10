@@ -130,8 +130,14 @@ class DubaiCashController extends Controller
      * @param  \App\Models\DubaiCash  $dubaiCash
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DubaiCash $dubaiCash)
+    public function destroy(DubaiCash $dubaiCash, $id)
     {
-        //
+        $dubai = DubaiCash::findOrFail($id);
+        if($dubai) {
+        $dubai->delete(); 
+        } else {
+            return response()->json(error);
+        }            
+        return response()->json(null); 
     }
 }

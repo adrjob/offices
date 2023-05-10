@@ -130,6 +130,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     
     <script>
+
+function delete_row(id) {
+            // var lnk = "http://yoursite.com/delete";
+            if(confirm("Are you sure you want to delete this Record?")){
+                $.ajax({
+                    url: '/api/cash/dubai/' + id,
+                    type: 'DELETE',
+                })
+                .done(function() {
+                    console.log("success");
+                    table.ajax.url('/api/cash/dubai/').load();                
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+            }
+        }
+
+
         // var month = new Date().getMonth() + 1;
         var table = $('#example').DataTable({
             ajax: '/api/cash/dubai/',

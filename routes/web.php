@@ -35,8 +35,8 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-
+Route::get('dashboard', [UserController::class, 'index'])->middleware('auth')->name('dashboard');
+// Route::get('user-profile', [UserController::class, 'index'])->middleware('auth')->name('user-profile');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');
 
@@ -77,6 +77,7 @@ Route::get('office/istanbul', [TurkeyController::class, 'index'])->middleware('a
 Route::get('office/vanuatu', [VanuatuController::class, 'index'])->middleware('auth')->name('office.vanuatu');
 Route::post('office/dubai/store', [DubaiController::class, 'store'])->middleware('auth')->name('office.dubai.store');
 Route::post('office/istanbul/store', [TurkeyController::class, 'store'])->middleware('auth')->name('office.turkey.store');
+// Route::post('office/istanbul/delete', [TurkeyController::class, 'destroy'])->middleware('auth')->name('office.turkey.delete');
 Route::post('office/vanuatu/store', [VanuatuController::class, 'store'])->middleware('auth')->name('office.vanuatu.store');
 Route::post('user-profile', [UserController::class, 'update'])->middleware('auth')->name('user.update');
 Route::get('user-profile', [UserController::class, 'index'])->middleware('auth')->name('user-profile');

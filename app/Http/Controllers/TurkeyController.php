@@ -126,8 +126,14 @@ class TurkeyController extends Controller
      * @param  \App\Models\Turkey  $turkey
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Turkey $turkey)
+    public function destroy(Turkey $turkey, $id)
     {
-        //
+        $dubai = Turkey::findOrFail($id);
+        if($dubai) {
+        $dubai->delete(); 
+        } else {
+            return response()->json(error);
+        }            
+        return response()->json(null); 
     }
 }

@@ -126,8 +126,14 @@ class VanuatuController extends Controller
      * @param  \App\Models\Vanuatu  $vanuatu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vanuatu $vanuatu)
+    public function destroy(Vanuatu $vanuatu, $id)
     {
-        //
+        $dubai = Vanuatu::findOrFail($id);
+        if($dubai) {
+        $dubai->delete(); 
+        } else {
+            return response()->json(error);
+        }            
+        return response()->json(null); 
     }
 }

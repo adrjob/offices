@@ -31,5 +31,10 @@ Route::get('/cash/vanuatu/{key?}', [VanuatuCashController::class, 'indexApi']);
 Route::get('/dubai/{key?}', [DubaiController::class, 'indexApi']);
 Route::delete('/dubai/{id}', [DubaiController::class, 'destroy']);
 Route::get('/istanbul/{key?}', [TurkeyController::class, 'indexApi']);
+Route::delete('/istanbul/{id?}', [TurkeyController::class, 'destroy']);
 Route::get('/vanuatu/{key?}', [VanuatuController::class, 'indexApi']);
+Route::delete('/vanuatu/{id?}', [VanuatuController::class, 'destroy']);
 
+Route::delete('/cash/dubai/{id}', [DubaiCashController::class, 'destroy']);
+Route::delete('/cash/istanbul/{id}', [IstanbulCashController::class, 'destroy']);
+Route::delete('/cash/vanuatu/{id}', [VanuatuCashController::class, 'destroy']);

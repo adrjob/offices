@@ -121,8 +121,14 @@ class IstanbulCashController extends Controller
      * @param  \App\Models\IstanbulCash  $istanbulCash
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IstanbulCash $istanbulCash)
+    public function destroy(IstanbulCash $istanbulCash, $id)
     {
-        //
+        $dubai = IstanbulCash::findOrFail($id);
+        if($dubai) {
+        $dubai->delete(); 
+        } else {
+            return response()->json(error);
+        }            
+        return response()->json(null); 
     }
 }

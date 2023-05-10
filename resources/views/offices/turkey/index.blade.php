@@ -14,20 +14,20 @@
 
     function delete_row(id) {
         // var lnk = "http://yoursite.com/delete";
-        if(confirm("Are you sure you want to delete this Record?")){
+        if(confirm("Are you sure you want to delete this Record?")){            
             $.ajax({
-                url: '/api/istanbul/' + id,
+                url: '/api/istanbul/' + id,                                
                 type: 'DELETE',
             })
             .done(function() {
-                console.log("success");
+                // console.log("success");
                 table.ajax.url('/api/istanbul/').load();                
             })
-            .fail(function() {
-                console.log("error");
+            .fail(function(e) {
+                console.log(e);
             })
             .always(function() {
-                console.log("complete");
+                // console.log("complete");
             });
         }
     }

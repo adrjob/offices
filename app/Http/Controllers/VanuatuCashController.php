@@ -119,8 +119,14 @@ class VanuatuCashController extends Controller
      * @param  \App\Models\VanuatuCash  $vanuatuCash
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VanuatuCash $vanuatuCash)
+    public function destroy(VanuatuCash $vanuatuCash, $id)
     {
-        //
+        $dubai = VanuatuCash::findOrFail($id);
+        if($dubai) {
+        $dubai->delete(); 
+        } else {
+            return response()->json(error);
+        }            
+        return response()->json(null); 
     }
 }
