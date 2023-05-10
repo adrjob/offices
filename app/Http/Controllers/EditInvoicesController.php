@@ -36,7 +36,7 @@ class EditInvoicesController extends Controller
         } else {
 
             $data = Vanuatu::where('id', $request->id)->get();        
-            return view('offices.turkey.edit', compact('display', 'data', 'country'));        
+            return view('offices.vanuatu.edit', compact('display', 'data', 'country'));        
         }        
     }
 
