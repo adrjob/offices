@@ -72,9 +72,9 @@
                                 </div>
                                 </div>
                             </div>
-                            <div class="row">                                
+                            <!-- <div class="row">                                
                                 
-                            </div>
+                            </div> -->
                             <input type="hidden" name="my_id" value="{{$data[0]->id}}">
                             <input type="hidden" name="country" value="dubai">
                             <button type="submit" class="btn btn-vancis mt-3">Save</button>

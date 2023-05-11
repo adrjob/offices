@@ -23,7 +23,10 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if(auth()->user()->isAdmin()) {return redirect('/office/dubai');}                
+                elseif(auth()->user()->isDubai()) {return redirect('/office/dubai');}                
+                elseif(auth()->user()->isTurkey()) {return redirect('/office/turkey');}                
+                else {return redirect('/office/vanuatu');}                
             }
         }
 

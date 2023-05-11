@@ -126,6 +126,7 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
+                    return redirect('office/dubai')->withStatus('Expense successfully updated.');                    
             } elseif($country == 'istanbul') {
                 Turkey::where('id', $id)->update(
                     [
@@ -134,6 +135,7 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
+                    return redirect('office/turkey')->withStatus('Expense successfully updated.');
             } else {
                 Vanuatu::where('id', $id)->update(
                     [
@@ -142,18 +144,21 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
+                    return redirect('office/vanuatu')->withStatus('Expense successfully updated.');
             }         
         } else {
             if($country == 'dubai') {
                 Dubai::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total')]);
+                return redirect('office/dubai')->withStatus('Expense successfully updated.');
             } elseif($country == 'istanbul') {
                 Turkey::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total')]);
+                return redirect('office/turkey')->withStatus('Expense successfully updated.');
             } else {
                 Vanuatu::where('id', $id)->update(['description' => $request->input('description'),'total'=>$request->input('total')]);
+                return redirect('office/vanuatu')->withStatus('Expense successfully updated.');
             }
         }      
-                
-        return redirect()->back()->withStatus('Invoice successfully updated.');
+                        
     }
 
     public function updateB(Request $request, EditInvoices $editInvoices)
@@ -171,6 +176,7 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
+                    return redirect('cash/dubai')->withStatus('Expense successfully updated.');
             } elseif($country == 'istanbul') {
                 IstanbulCash::where('id', $id)->update(
                     [
@@ -179,6 +185,7 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
+                    return redirect('cash/istanbul')->withStatus('Expense successfully updated.');
             } else {
                 VanuatuCash::where('id', $id)->update(
                     [
@@ -187,14 +194,18 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
+                    return redirect('cash/vanuatu')->withStatus('Expense successfully updated.');
             }         
         } else {
             if($country == 'dubai') {
                 DubaiCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
+                return redirect('cash/dubai')->withStatus('Expense successfully updated.');
             } elseif($country == 'istanbul') {
                 IstanbulCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
+                return redirect('cash/istanbul')->withStatus('Expense successfully updated.');
             } else {
                 VanuatuCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
+                return redirect('cash/vanuatu')->withStatus('Expense successfully updated.');
             }
         }      
                 

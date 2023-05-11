@@ -38,7 +38,7 @@
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
-                                <h4>Edit Invoice</h4>                    
+                                <h4>Edit Expense</h4>                    
                             </div>
                             <div class="card-body">
                             <form role="form text-left" autocomplete="off"  method="POST" action="{{ route('edit.invoice.update', 'vanuatu') }}" enctype="multipart/form-data">
