@@ -61,7 +61,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                 <div class="input-group input-group-static my-3">
-                                    <label >Receive</label>
+                                    <label >Turkish Lira/TL</label>
                                     <input type="text" name="receive" class="form-control" value="{{$data[0]->receive}}">
                                 </div>
                                 </div>
