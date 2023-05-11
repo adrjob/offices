@@ -18,7 +18,10 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */    
     
-    public const HOME = '/user-profile';
+    // public const HOME = '/user-profile';
+    public const HOMEDUBAI = '/office/dubai';
+    public const HOMETURKEY = '/office/istanbul';
+    public const HOMEVANUATU = '/office/vanuatu';
 
     /**
      * The controller namespace for the application.
