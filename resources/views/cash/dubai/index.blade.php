@@ -92,7 +92,7 @@
                                     <tr>
                                         <th>Id</th>                                    
                                         <th>Description/Notes</th>                                           
-                                        <th>Receive</th>                                
+                                        <th>Dirham/AED</th>                                
                                         <!-- <th>Spend</th> -->
                                         <!-- <th>Total</th> -->
                                         <th>Created At</th>
