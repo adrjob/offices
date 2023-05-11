@@ -98,7 +98,7 @@
 
                 @can('viewAny', App\Models\User::class)
                 <li class="nav-item">
-                <a href="{{ route('user-profile') }}"
+                <a href="{{ route('users') }}"
                         class="nav-link text-white {{ $activePage == 'user-profile' ? ' active ' : '' }} "
                         aria-controls="dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'"
                         style="margin-left: 12px">
@@ -111,7 +111,7 @@
                 
                 <!-- @can('viewAny', App\Models\Dubai::class) -->
                 <li class="nav-item">
-                <a href="{{ route('users') }}"
+                <a href="{{ route('user-profile') }}"
                         class="nav-link text-white {{ $activePage == 'laravel-examples' ? ' active ' : '' }} "
                         aria-controls="dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'"
                         style="margin-left: 12px">
