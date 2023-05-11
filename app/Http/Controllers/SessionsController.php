@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Auth;
 use Str;
 
 class SessionsController extends Controller
@@ -31,7 +32,25 @@ class SessionsController extends Controller
 
         session()->regenerate();
 
-        return redirect('/user-profile');
+        if (Auth::user()->isAdmin()) {
+            return redirect()->route('office.dubai');
+            // return redirect(RouteServiceProvider::HOMEDUBAI);
+        }
+        
+        if (Auth::user()->isTurkey()) {
+            return redirect()->route('office.turkey');
+            // return redirect(RouteServiceProvider::HOMETURKEY);
+        }
+
+        if (Auth::user()->isDubai()) {
+            return redirect()->route('office.dubai');
+            // return redirect(RouteServiceProvider::HOMEDUBAI);
+        }
+
+        if (Auth::user()->isVanuatu()) {
+            return redirect()->route('office.vanuatu');
+            // return redirect(RouteServiceProvider::HOMEVANUATU);
+        }                          
 
     }
 
