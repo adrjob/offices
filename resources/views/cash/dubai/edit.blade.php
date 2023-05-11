@@ -67,18 +67,13 @@
                                 </div>
                                 <div class="col-md-6">
                                 <div class="input-group input-group-static my-3">
-                                    <label >Spend</label>
-                                    <input type="text" name="spend" class="form-control" value="{{$data[0]->spend}}">                                    
-                                </div>
-                                </div>
-                            </div>
-                            <div class="row">                                
-                                <div class="col-md-6">
-                                <div class="input-group input-group-static my-3">
                                     <label >File</label>
                                     <input type="file" name="dubaiPath" class="form-control">
                                 </div>
                                 </div>
+                            </div>
+                            <div class="row">                                
+                                
                             </div>
                             <input type="hidden" name="my_id" value="{{$data[0]->id}}">
                             <input type="hidden" name="country" value="dubai">
