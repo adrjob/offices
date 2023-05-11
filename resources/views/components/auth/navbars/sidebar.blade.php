@@ -104,7 +104,7 @@
                         style="margin-left: 12px">
                         <i class="material-icons-round opacity-10">settings</i>
                         <!-- <img src="https://flagcdn.com/20x15/ae.png" alt=""> -->
-                        <span class="nav-link-text ms-2 ps-1">Settings</span>
+                        <span class="nav-link-text ms-2 ps-1">Settings Users</span>
                     </a>                                            
                 </li>
                 @endcan
@@ -117,7 +117,7 @@
                         style="margin-left: 12px">
                         <i class="material-icons-round opacity-10">group</i>
                         <!-- <img src="https://flagcdn.com/20x15/ae.png" alt=""> -->
-                        <span class="nav-link-text ms-2 ps-1">User</span>
+                        <span class="nav-link-text ms-2 ps-1">Setting</span>
                     </a>                                            
                 </li>
                 
