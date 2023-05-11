@@ -9,7 +9,7 @@
                 @elseif($dd == 'Istanbul')
                 <th>Turkish Lira/TL</th>                                
                 @else
-                <th>Vatu/VuV</th>                                
+                <th>Vatu/VUV</th>                                
                 @endif                
                 <!-- <th>USD</th> -->
                 <th>Created At</th>
