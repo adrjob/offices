@@ -109,7 +109,7 @@
                 </li>
                 @endcan
                 
-                @can('viewAny', App\Models\Dubai::class)
+                <!-- @can('viewAny', App\Models\Dubai::class) -->
                 <li class="nav-item">
                 <a href="{{ route('users') }}"
                         class="nav-link text-white {{ $activePage == 'laravel-examples' ? ' active ' : '' }} "
@@ -120,7 +120,7 @@
                         <span class="nav-link-text ms-2 ps-1">Users</span>
                     </a>                                            
                 </li>
-                @endcan            
+                <!-- @endcan             -->
         </ul>
     </div>
     <!-- <div class="sidenav-footer w-100 bottom-0 mt-2 ">
