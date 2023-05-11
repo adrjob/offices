@@ -1,16 +1,21 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
     <x-auth.navbars.sidebar activePage="dubai" activeItem="dubai" activeSubitem="">
     </x-auth.navbars.sidebar>    
-    <x-layout country="Invoices Dubai" action="/office/dubai/store"/>        
+    <x-layout country="Dubai Expenses" dd="Dubai" action="/office/dubai/store"/>        
     <x-plugins></x-plugins>
     @push('js')
     <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-  
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     
+    
+
+
+
+
+
     <script type="text/javascript">
+
+
 
     function delete_row(id) {
         // var lnk = "http://yoursite.com/delete";
@@ -40,14 +45,21 @@
         ajax: '/api/dubai/',
         // searching: false,
         columns: [
-            { data: 'id' },            
+            // { data: 'id' },            
             { data: 'description' },
             { data: 'total' },
             { data: 'created_at' }
         ],
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
         columnDefs: [
             {
-                targets: [4],
+                targets: [3],
                 render: function (data, type, row) {    
                     if(row.status === 0) {
                         var fazerUpload = '<label for="file-input"><i class="material-icons" style="padding-right: 20px !important; color: green !important">upload</i><div class="ripple-container"></div></label><input id="file-input" type="file" style="display: none"/>'
@@ -89,8 +101,8 @@
         ],
         "footerCallback": function( tfoot, data, start, end, display ) {
             var api = this.api();
-    $( api.column( 2 ).footer() ).html(
-        api.column( 2 ).data().reduce( function ( a, b ) {
+    $( api.column( 1 ).footer() ).html(
+        api.column( 1 ).data().reduce( function ( a, b ) {
             console.log(typeof b)
             return Number(a) + Number(b);
         }, 0 )

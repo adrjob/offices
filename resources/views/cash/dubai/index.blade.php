@@ -3,7 +3,7 @@
     </x-auth.navbars.sidebar>    
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-auth.navbars.navs.auth pageTitle="Cash Dubai"></x-auth.navbars.navs.auth>
+        <x-auth.navbars.navs.auth pageTitle="Receivables"></x-auth.navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row mt-4">
@@ -29,7 +29,7 @@
                 <div class="col-12">
                     <div class="card">
                     <div class="card-header">
-                            <h5 class="mb-0">Cash Dubai</h5>     
+                            <h5 class="mb-0">Receivables</h5>     
                             <br>
                             <div class="input-group input-group-static mb-4 w-10">
                                 <label for="search-month" class="ms-0" style="color: black">Search by Month</label>
@@ -91,10 +91,10 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Id</th>                                    
-                                        <th>Description</th>                                           
+                                        <th>Description/Notes</th>                                           
                                         <th>Receive</th>                                
-                                        <th>Spend</th>
-                                        <th>Total</th>
+                                        <!-- <th>Spend</th> -->
+                                        <!-- <th>Total</th> -->
                                         <th>Created At</th>
                                         <th>Action</th>
                                     </tr>
@@ -104,8 +104,8 @@
                                         <th></th>                                    
                                         <th></th>    
                                         <th></th>
-                                        <th></th>                                
-                                        <th></th>
+                                        <!-- <th></th>                                 -->
+                                        <!-- <th></th> -->
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -161,7 +161,7 @@ function delete_row(id) {
                 { data: 'id' },
                 { data: 'description' },
                 { data: 'receive' },
-                { data: 'spend' },                
+                // { data: 'spend' },                
                 { data: 'created_at' }
             ],
             columnDefs: [                                       
@@ -172,24 +172,24 @@ function delete_row(id) {
 
                     }
                 },
+                // {
+                //     targets: [3],
+                //     render: function (data, type, row) {
+                //         if (row.spend == null) {
+                //             return "<span style='color: red'>0</span>"
+                //         } else {
+                //             return "<span style='color: red'>" + row.spend + "</span>"
+                //         }
+                //     }
+                // },
+                // {
+                //     targets: [4],
+                //     render: function (data, type, row) {
+                //         return row.receive - row.spend;
+                //     }
+                // }, 
                 {
-                    targets: [3],
-                    render: function (data, type, row) {
-                        if (row.spend == null) {
-                            return "<span style='color: red'>0</span>"
-                        } else {
-                            return "<span style='color: red'>" + row.spend + "</span>"
-                        }
-                    }
-                },
-                {
-                    targets: [4],
-                    render: function (data, type, row) {
-                        return row.receive - row.spend;
-                    }
-                }, 
-                {
-                    targets:[5],
+                    targets:[3],
                     render: function (data, type, row) {
                         return isNaN(row.created_at) && moment(row.created_at).isValid() ?
                                 moment(row.created_at).format('MM/DD/YYYY', 'YYYY/MM/DD')
@@ -197,7 +197,7 @@ function delete_row(id) {
                     }
                 },               
                 {
-                    targets: [6],
+                    targets: [4],
                     // render: function (data, type, row) {
                     //     if (row.status = 0) {
                     //         return "view";
@@ -236,13 +236,7 @@ function delete_row(id) {
                
             ],
             "footerCallback": function (tfoot, data, start, end, display) {
-                var api = this.api();
-                $(api.column(3).footer()).html(
-                    api.column(3).data().reduce(function (a, b) {
-                        console.log(typeof b)
-                        return Number(a) + Number(b);
-                    }, 0)
-                );   
+                var api = this.api();               
                 $(api.column(2).footer()).html(
                     api.column(2).data().reduce(function (a, b) {
                         console.log(typeof b)

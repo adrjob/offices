@@ -57,7 +57,7 @@
                         <x-modal-edit title="Edit Dubai" action="test" dataURL="ok"/>
                         <x-modal dataURL="" action="{{ $action }}" title="{{ $country }}" />
                         <div class="card-body">
-                        <x-table-invoices />
+                        <x-table-invoices dd="{{$dd}}"/>
                         </div>
                     </div>
                 </div>    

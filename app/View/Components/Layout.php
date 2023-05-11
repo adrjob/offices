@@ -13,10 +13,12 @@ class Layout extends Component
      */
     public $action;
     public $country;
-    public function __construct($action, $country)
+    public $dd;
+    public function __construct($action, $country, $dd)
     {
         $this->action = $action;
         $this->country = $country;
+        $this->dd = $dd;
     }
 
     /**

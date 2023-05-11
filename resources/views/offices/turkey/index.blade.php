@@ -1,7 +1,7 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
     <x-auth.navbars.sidebar activePage="turkey" activeItem="turkey" activeSubitem="">
     </x-auth.navbars.sidebar>    
-    <x-layout country="Invoices Istanbul" action="/office/istanbul/store"/>        
+    <x-layout country="Istanbul Expenses" dd="Istanbul" action="/office/istanbul/store"/>        
     <x-plugins></x-plugins>
     @push('js')
     <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>    
@@ -40,14 +40,21 @@
         ajax: '/api/istanbul/',
         // searching: false,
         columns: [
-            { data: 'id' },            
+            // { data: 'id' },            
             { data: 'description' },
             { data: 'total' },
             { data: 'created_at' }
         ],
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
         columnDefs: [
             {
-                targets: [4],
+                targets: [3],
                 render: function (data, type, row) {    
                     if(row.status === 0) {
                         var fazerUpload = '<label for="file-input"><i class="material-icons" style="padding-right: 20px !important; color: green !important">upload</i><div class="ripple-container"></div></label><input id="file-input" type="file" style="display: none"/>'
@@ -86,8 +93,8 @@
         ],
         "footerCallback": function( tfoot, data, start, end, display ) {
             var api = this.api();
-    $( api.column( 2 ).footer() ).html(
-        api.column( 2 ).data().reduce( function ( a, b ) {
+    $( api.column( 1 ).footer() ).html(
+        api.column( 1 ).data().reduce( function ( a, b ) {
             console.log(typeof b)
             return Number(a) + Number(b);
         }, 0 )

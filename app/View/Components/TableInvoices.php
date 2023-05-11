@@ -11,9 +11,10 @@ class TableInvoices extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $dd;
+    public function __construct($dd)
     {
-        //
+        $this->dd = $dd;
     }
 
     /**

@@ -18,7 +18,7 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0 d-flex align-items-center text-wrap" href="{{ route('dashboard') }}">
             <img src="https://vanciscapital.com/wp-content/uploads/2022/11/cropped-Vancis-Capital-New-Logo-2022-White-Gold-Recovered.png" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-2 font-weight-400 text-white">Vancis Finace</span>
+            <span class="ms-2 font-weight-400 text-white">Vancis Finance</span>
         </a>
     </div>
     <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
@@ -31,7 +31,7 @@
                         aria-controls="dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/ae.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Dubai Invoices</span>
+                        <span class="nav-link-text ms-2 ps-1">Dubai Expenses</span>
                     </a>                                            
                 </li>
                 @endcan
@@ -43,7 +43,7 @@
                         aria-controls="cash_dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/ae.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Cash Dubai</span>
+                        <span class="nav-link-text ms-2 ps-1">Receivables</span>
                     </a>                                            
                 </li>
                 @endcan
@@ -55,7 +55,7 @@
                         aria-controls="turkey" role="button" aria-expanded="false">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/tr.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Istanbul Invoices</span>
+                        <span class="nav-link-text ms-2 ps-1">Istanbul Expenses</span>
                     </a>
                 </li>    
                 @endcan
@@ -67,7 +67,7 @@
                         aria-controls="cash_istanbul" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/tr.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Cash Istanbul</span>
+                        <span class="nav-link-text ms-2 ps-1">Receivables</span>
                     </a>                                            
                 </li>
                 @endcan
@@ -79,7 +79,7 @@
                         aria-controls="vanuatu" role="button" aria-expanded="false">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/vu.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Vanuatu Invoices</span>
+                        <span class="nav-link-text ms-2 ps-1">Vanuatu Expenses</span>
                     </a>
                 </li>       
                 @endcan  
@@ -91,7 +91,7 @@
                         aria-controls="vanuatu_cash" role="button" aria-expanded="false">
                         <!-- <i class="material-icons-round opacity-10">dashboard</i> -->
                         <img src="https://flagcdn.com/20x15/vu.png" alt="">
-                        <span class="nav-link-text ms-2 ps-1">Vanuatu Cash</span>
+                        <span class="nav-link-text ms-2 ps-1">Receivables</span>
                     </a>
                 </li>    
                 @endcan

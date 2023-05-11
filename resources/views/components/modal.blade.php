@@ -21,7 +21,7 @@
                 <input type="number" name="total" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)" required>
             </div>
             <div class="input-group input-group-outline my-3">                
-                <input type="file" name="dubaiPath" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)">
+                <input type="file" name="dubaiPath" class="form-control" onfocus="focused(this)" onfocusout="defocused(this)" required>
             </div>                
             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}" />                                    
             <div class="text-center">
