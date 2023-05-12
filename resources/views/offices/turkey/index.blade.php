@@ -92,7 +92,7 @@
             var api = this.api();
     $( api.column( 1 ).footer() ).html(
         api.column( 1 ).data().reduce( function ( a, b ) {
-            console.log(typeof b)
+            // console.log(typeof b)
             return Number(a) + Number(b);
         }, 0 )
     );

@@ -148,13 +148,15 @@
     </main>
     <x-plugins></x-plugins>
     @push('js')
-    <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
-
-    <!-- <script src="{{ asset('assets') }}/js/plugins/datatables.js"></script> -->
+    <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <!-- <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
+
+    <script src="{{ asset('assets') }}/js/plugins/datatables.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" /> -->
   
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script> -->
     
     <script>
 
@@ -190,6 +192,13 @@ function delete_row(id) {
                 // { data: 'spend' },                
                 { data: 'created_at' }
             ],
+            dom: '<"toolbar">Bfrtip',
+            buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
             columnDefs: [                                       
                 {
                     targets: [2],
@@ -265,7 +274,7 @@ function delete_row(id) {
                 var api = this.api();               
                 $(api.column(2).footer()).html(
                     api.column(2).data().reduce(function (a, b) {
-                        console.log(typeof b)
+                        // console.log(typeof b)
                         return Number(a) + Number(b);
                     }, 0)
                 );             
