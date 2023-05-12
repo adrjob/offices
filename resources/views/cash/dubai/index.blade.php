@@ -34,6 +34,31 @@
                             <div class="input-group input-group-static mb-4 w-10">
                                 <label for="search-month" class="ms-0" style="color: black">Search by Month</label>
                             <select class="form-control" name="search-month" id="search-month">
+                            @if($month == 1)
+                                <option value="01">Jan</option>
+                                @elseif($month == 2)
+                                <option value="02">2 - Feb</option>
+                                @elseif($month == 3)
+                                <option value="03">3 - Mar</option>
+                                @elseif($month == 4)
+                                <option value="04">4 - Apr</option>
+                                @elseif($month == 5)
+                                <option value="05">5 - May</option>
+                                @elseif($month == 6)
+                                <option value="06">6 - Jun</option>
+                                @elseif($month == 7)
+                                <option value="07">7 - Jul</option>
+                                @elseif($month == 8)
+                                <option value="08">8 - Aug</option>
+                                @elseif($month == 9)
+                                <option value="09">9 - Sep</option>
+                                @elseif($month == 10)
+                                <option value="10">10 - Oct</option>
+                                @elseif($month == 11)
+                                <option value="11">11 - Nov</option>
+                                @else
+                                <option value="12">12 - Dez</option>
+                                @endif   
                                 <option value="01">1 - Jan</option>
                                 <option value="02">2 - Feb</option>
                                 <option value="03">3 - Mar</option>
@@ -45,18 +70,19 @@
                                 <option value="09">9 - Sep</option>
                                 <option value="10">10 - Oct</option>
                                 <option value="11">11 - Nov</option>
-                                <option value="12">12 - Dez</option>
+                                <option value="12">12 - Dez</option>                    
                             </select>
                             </div>                                                      
                         </div>
-                        <button type="button" class="btn bg-gradient-dark btn-vancis mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">Add New</button>
+                        <!-- <a type="button" class="btn bg-gradient-dark btn-vancis mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">Add New</a> -->
+                        <a data-bs-toggle="modal" data-bs-target="#exampleModalMessage" class="btn btn-vancis btn-sm myCustomButton">Add New<div class="ripple-container"></div></a>
                         <div class="modal fade" id="exampleModalMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessage" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                             <div class="modal-content">
                             <div class="modal-body p-0">
                                 <div class="card card-plain">
                                 <div class="card-header pb-0 text-center">
-                                    <h5 class="">Add New Invoice</h5>
+                                    <h5 class="">Add New</h5>
                                     <p class="mb-0"></p>
                                 </div>
                                 <div class="card-body">
@@ -136,12 +162,12 @@ function delete_row(id) {
             // var lnk = "http://yoursite.com/delete";
             if(confirm("Are you sure you want to delete this Record?")){
                 $.ajax({
-                    url: '/api/cash/dubai/' + id,
+                    url: '/api/receivables/dubai/' + id,
                     type: 'DELETE',
                 })
                 .done(function() {
                     console.log("success");
-                    table.ajax.url('/api/cash/dubai/').load();                
+                    table.ajax.url('/api/receivables/dubai/').load();                
                 })
                 .fail(function() {
                     console.log("error");
@@ -155,7 +181,7 @@ function delete_row(id) {
 
         // var month = new Date().getMonth() + 1;
         var table = $('#example').DataTable({
-            ajax: '/api/cash/dubai/',
+            ajax: '/api/receivables/dubai/',
             // searching: false,
             columns: [
                 { data: 'id' },
@@ -247,7 +273,7 @@ function delete_row(id) {
         })
 
         $('#search-month').on('change', function () {
-            table.ajax.url('/api/cash/dubai/' + this.value).load();
+            table.ajax.url('/api/receivables/dubai/' + this.value).load();
         });        
     </script>
     @endpush

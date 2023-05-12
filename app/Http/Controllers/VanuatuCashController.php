@@ -19,8 +19,9 @@ class VanuatuCashController extends Controller
     {
         $au = auth()->user();
         
-        if($au->isVanuatu()|| $au->isAdmin()) {            
-            return view('cash.vanuatu.index', ['dubai' => VanuatuCash::get()]);     
+        if($au->isVanuatu()|| $au->isAdmin()) {     
+            $now = Carbon::now();       
+            return view('cash.vanuatu.index', ['dubai' => VanuatuCash::get(), 'month' => $now->month]);     
             $cas = VanuatuCash::get();            
         }
         abort(403);        
@@ -75,7 +76,7 @@ class VanuatuCashController extends Controller
 
         VanuatuCash::create($attributes);
 
-        return redirect('cash/vanuatu')->withStatus('Invoice successfully created.');
+        return redirect('receivables/vanuatu')->withStatus('Invoice successfully created.');
     }
 
 

@@ -24,9 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/cash/dubai/{key?}', [DubaiCashController::class, 'indexApi']);
-Route::get('/cash/istanbul/{key?}', [IstanbulCashController::class, 'indexApi']);
-Route::get('/cash/vanuatu/{key?}', [VanuatuCashController::class, 'indexApi']);
+Route::get('/receivables/dubai/{key?}', [DubaiCashController::class, 'indexApi']);
+Route::get('/receivables/istanbul/{key?}', [IstanbulCashController::class, 'indexApi']);
+Route::get('/receivables/vanuatu/{key?}', [VanuatuCashController::class, 'indexApi']);
 
 Route::get('/dubai/{key?}', [DubaiController::class, 'indexApi']);
 Route::delete('/dubai/{id}', [DubaiController::class, 'destroy']);
@@ -35,6 +35,6 @@ Route::delete('/istanbul/{id?}', [TurkeyController::class, 'destroy']);
 Route::get('/vanuatu/{key?}', [VanuatuController::class, 'indexApi']);
 Route::delete('/vanuatu/{id?}', [VanuatuController::class, 'destroy']);
 
-Route::delete('/cash/dubai/{id}', [DubaiCashController::class, 'destroy']);
-Route::delete('/cash/istanbul/{id}', [IstanbulCashController::class, 'destroy']);
-Route::delete('/cash/vanuatu/{id}', [VanuatuCashController::class, 'destroy']);
+Route::delete('/receivables/dubai/{id}', [DubaiCashController::class, 'destroy']);
+Route::delete('/receivables/istanbul/{id}', [IstanbulCashController::class, 'destroy']);
+Route::delete('/receivables/vanuatu/{id}', [VanuatuCashController::class, 'destroy']);

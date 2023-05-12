@@ -59,6 +59,57 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
     /* background-image: linear-gradient(195deg, #9a752f 0%, #9a752f 100%) !important; */
 }
+
+button.dt-button, div.dt-button, a.dt-button, input.dt-button {
+    border-radius: 2px;
+    color: white;
+    background-image: linear-gradient(195deg, #9a752f 0%, #9a752f 100%) !important;
+}
+
+button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-button:hover:not(.disabled), input.dt-button:hover:not(.disabled) {
+  background-image: linear-gradient(195deg, #9a752f 0%, #9a752f 100%) !important;
+}
+
+button {
+  border-radius: 4px;
+  background-color: #5ca1e1;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  padding: 5;
+  width: 80px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 6px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+button{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;  
+  top: 0px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover{
+  padding-right: 24px;
+  padding-left:8px;
+}
+
+button:hover:after {
+  opacity: 1;
+  right: 10px;
+}
 </style>
 </head>
 

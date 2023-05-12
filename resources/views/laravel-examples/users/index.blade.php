@@ -1,5 +1,5 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
-    <x-auth.navbars.sidebar activePage="laravel-examples" activeItem="user-management" activeSubitem="">
+    <x-auth.navbars.sidebar activePage="user-management" activeItem="user-management" activeSubitem="">
     </x-auth.navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
@@ -89,12 +89,12 @@
                                                 </a>
                                                 @endcan
                                                 @can('delete', $user)
-                                                <button type="button" class="btn btn-danger mt-2 btn-sm"
+                                                <a type="button" class="btn btn-danger mt-2 btn-sm"
                                                     data-original-title="" title=""
                                                     onclick="confirm('Are you sure you want to delete this user?') ? this.parentElement.submit() : ''">
                                                     <i class="material-icons">close</i>
                                                     <div class="ripple-container"></div>
-                                                </button>
+</a>
                                                 @endcan
                                             </form>
                                             @else

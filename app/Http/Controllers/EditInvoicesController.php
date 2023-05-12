@@ -176,7 +176,7 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
-                    return redirect('cash/dubai')->withStatus('Expense successfully updated.');
+                    return redirect('receivables/dubai')->withStatus('Expense successfully updated.');
             } elseif($country == 'istanbul') {
                 IstanbulCash::where('id', $id)->update(
                     [
@@ -185,7 +185,7 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
-                    return redirect('cash/istanbul')->withStatus('Expense successfully updated.');
+                    return redirect('receivables/istanbul')->withStatus('Expense successfully updated.');
             } else {
                 VanuatuCash::where('id', $id)->update(
                     [
@@ -194,18 +194,18 @@ class EditInvoicesController extends Controller
                         'dubaiPath'=>$path, 
                         'status' => 0,
                     ]);
-                    return redirect('cash/vanuatu')->withStatus('Expense successfully updated.');
+                    return redirect('receivables/vanuatu')->withStatus('Expense successfully updated.');
             }         
         } else {
             if($country == 'dubai') {
                 DubaiCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
-                return redirect('cash/dubai')->withStatus('Expense successfully updated.');
+                return redirect('receivables/dubai')->withStatus('Expense successfully updated.');
             } elseif($country == 'istanbul') {
                 IstanbulCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
-                return redirect('cash/istanbul')->withStatus('Expense successfully updated.');
+                return redirect('receivables/istanbul')->withStatus('Expense successfully updated.');
             } else {
                 VanuatuCash::where('id', $id)->update(['receive' => $request->input('receive'),'spend'=>$request->input('spend')]);
-                return redirect('cash/vanuatu')->withStatus('Expense successfully updated.');
+                return redirect('receivables/vanuatu')->withStatus('Expense successfully updated.');
             }
         }      
                 

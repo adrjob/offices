@@ -1,7 +1,7 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
     <x-auth.navbars.sidebar activePage="vanuatu" activeItem="vanuatu" activeSubitem="">
     </x-auth.navbars.sidebar>    
-    <x-layout country="Vanuatu Expenses" dd="Vanuatu" action="/office/vanuatu/store"/>        
+    <x-layout country="Vanuatu Expenses" dd="Vanuatu" action="/office/vanuatu/store" month="{{$month}}"/>        
     <x-plugins></x-plugins>
     @push('js')
     <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>    

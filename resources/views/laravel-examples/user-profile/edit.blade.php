@@ -125,8 +125,8 @@
                             </div> -->
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type='submit' class="btn btn-vancis btn-sm mt-6 mb-0">Save
-                                        Changes</button >
+                                    <a type='submit' class="btn btn-vancis btn-sm mt-6 mb-0">Save
+                                        Changes</a >
                                 </div>
                             </div>
                             </form>
@@ -140,10 +140,10 @@
                             <div class="row">
                                 <div class="alert alert-danger alert-dismissible text-white" role="alert">
                                     <span class="text-sm">{{ Session::get('error') }}</span>
-                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                    <a type="button" class="btn-close text-lg py-3 opacity-10"
                                         data-bs-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
-                                    </button>
+</a>
                                 </div>
                             </div>
                             @elseif (session('success'))
@@ -181,7 +181,7 @@
                                     <label class="form-label">Confirm New password</label>
                                     <input type="password" name='password_confirmation' class="form-control">
                                 </div>
-                                <button class="btn btn-vancis btn-sm mt-6 mb-0">Update password</button>
+                                <a class="btn btn-vancis btn-sm mt-6 mb-0">Update password</a>
                             </form>
                         </div>
                     </div>

@@ -60,17 +60,17 @@ Route::get('reset-password/{token}', function ($token) {
 Route::post('update-invoice/{country}', [EditInvoicesController::class, 'update'])->middleware('auth')->name('edit.invoice.update');
 Route::get('edit-invoice/{id}/{country}', [EditInvoicesController::class, 'index'])->middleware('auth')->name('edit.invoice');
 
-Route::post('update-cash/{country}', [EditInvoicesController::class, 'updateB'])->middleware('auth')->name('edit.cash.update');
-Route::get('edit-cash/{id}/{country}', [EditInvoicesController::class, 'indexA'])->middleware('auth')->name('edit.cash');
+Route::post('update-receivables/{country}', [EditInvoicesController::class, 'updateB'])->middleware('auth')->name('edit.cash.update');
+Route::get('edit-receivables/{id}/{country}', [EditInvoicesController::class, 'indexA'])->middleware('auth')->name('edit.cash');
 
-Route::get('cash/dubai', [DubaiCashController::class, 'index'])->middleware('auth')->name('cash.dubai');
-Route::post('cash/dubai/store', [DubaiCashController::class, 'store'])->middleware('auth')->name('cash.dubai.store');
+Route::get('receivables/dubai', [DubaiCashController::class, 'index'])->middleware('auth')->name('cash.dubai');
+Route::post('receivables/dubai/store', [DubaiCashController::class, 'store'])->middleware('auth')->name('cash.dubai.store');
 
-Route::get('cash/istanbul', [IstanbulCashController::class, 'index'])->middleware('auth')->name('cash.istanbul');
-Route::post('cash/istanbul/store', [IstanbulCashController::class, 'store'])->middleware('auth')->name('cash.istanbul.store');
+Route::get('receivables/istanbul', [IstanbulCashController::class, 'index'])->middleware('auth')->name('cash.istanbul');
+Route::post('receivables/istanbul/store', [IstanbulCashController::class, 'store'])->middleware('auth')->name('cash.istanbul.store');
 
-Route::get('cash/vanuatu', [VanuatuCashController::class, 'index'])->middleware('auth')->name('cash.vanuatu');
-Route::post('cash/vanuatu/store', [VanuatuCashController::class, 'store'])->middleware('auth')->name('cash.vanuatu.store');
+Route::get('receivables/vanuatu', [VanuatuCashController::class, 'index'])->middleware('auth')->name('cash.vanuatu');
+Route::post('receivables/vanuatu/store', [VanuatuCashController::class, 'store'])->middleware('auth')->name('cash.vanuatu.store');
 
 Route::get('office/dubai', [DubaiController::class, 'index'])->middleware('auth')->name('office.dubai');
 Route::get('office/istanbul', [TurkeyController::class, 'index'])->middleware('auth')->name('office.turkey');

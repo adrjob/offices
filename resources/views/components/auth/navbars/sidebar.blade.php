@@ -16,7 +16,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0 d-flex align-items-center text-wrap" href="{{ route('dashboard') }}">
+        <a class="navbar-brand m-0 d-flex align-items-center text-wrap" href="{{ route('user-profile') }}">
             <img src="https://vanciscapital.com/wp-content/uploads/2022/11/cropped-Vancis-Capital-New-Logo-2022-White-Gold-Recovered.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-2 font-weight-400 text-white">Vancis Finance</span>
         </a>
@@ -99,7 +99,7 @@
                 @can('viewAny', App\Models\User::class)
                 <li class="nav-item">
                 <a href="{{ route('users') }}"
-                        class="nav-link text-white {{ $activePage == 'user-profile' ? ' active ' : '' }} "
+                        class="nav-link text-white {{ $activePage == 'user-management' ? ' active ' : '' }} "
                         aria-controls="dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'"
                         style="margin-left: 12px">
                         <i class="material-icons-round opacity-10">settings</i>
@@ -112,7 +112,7 @@
                 
                 <li class="nav-item">
                 <a href="{{ route('user-profile') }}"
-                        class="nav-link text-white {{ $activePage == 'laravel-examples' ? ' active ' : '' }} "
+                        class="nav-link text-white {{ $activePage == 'user-profile' ? ' active ' : '' }} "
                         aria-controls="dubai" role="button" aria-expanded="false" onMouseOver="this.style.color='#0F0'"
                         style="margin-left: 12px">
                         <i class="material-icons-round opacity-10">settings</i>

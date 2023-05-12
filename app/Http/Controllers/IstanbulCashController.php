@@ -22,7 +22,7 @@ class IstanbulCashController extends Controller
         if($au->isTurkey()|| $au->isAdmin()) {  
             $now = Carbon::now();        
             // $ok = 1 > 0 ? 5 : $now->month;          
-            return view('cash.istanbul.index', ['dubai' => IstanbulCash::get(), 'getMonth' => $now->month]);     
+            return view('cash.istanbul.index', ['dubai' => IstanbulCash::get(), 'month' => $now->month]);     
             $cas = IstanbulCash::get();            
         }
         abort(403);        
@@ -77,7 +77,7 @@ class IstanbulCashController extends Controller
 
         IstanbulCash::create($attributes);
 
-        return redirect('cash/istanbul')->withStatus('Invoice successfully created.');
+        return redirect('receivables/istanbul')->withStatus('Invoice successfully created.');
     }
 
 

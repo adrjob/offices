@@ -87,7 +87,7 @@ class DubaiCashController extends Controller
 
         DubaiCash::create($attributes);
 
-        return redirect('cash/dubai')->withStatus('Invoice successfully created.');
+        return redirect('receivables/dubai')->withStatus('Invoice successfully created.');
     }
 
     /**

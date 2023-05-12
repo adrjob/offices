@@ -1,5 +1,5 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
-    <x-auth.navbars.sidebar activePage="laravel-examples" activeItem="user-management" activeSubitem="">
+    <x-auth.navbars.sidebar activePage="user-management" activeItem="user-management" activeSubitem="">
     </x-auth.navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
@@ -81,7 +81,7 @@
                                     <label for="examplePassword2">Confirm Password</label>
                                     <input type="password" name='password_confirmation' class="form-control border border-2 p-2" id="examplePassword2" placeholder="Confirm Password">
                                 </div>
-                                <button type="submit" class="btn btn-vancis mt-3">Add user</button>
+                                <a type="submit" class="btn btn-vancis mt-3">Add user</a>
                             </form>
                         </div>
                     </div>

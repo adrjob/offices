@@ -11,7 +11,7 @@
             }
         </style>
         <x-edit-invoices display="none"/>
-        <div class="container-fluid py-4">
+        <div class="container-fluid py-4">            
             <div class="row mt-4">
                 <div class="col-12">
                          @if (Session::has('status'))
@@ -39,6 +39,31 @@
                             <div class="input-group input-group-static mb-4 w-10">
                                 <label for="search-month" class="ms-0" style="color: black">Search by Month</label>
                                 <select class="form-control" name="search-month" id="search-month">
+                                @if($month == 1)
+                                <option value="01">Jan</option>
+                                @elseif($month == 2)
+                                <option value="02">2 - Feb</option>
+                                @elseif($month == 3)
+                                <option value="03">3 - Mar</option>
+                                @elseif($month == 4)
+                                <option value="04">4 - Apr</option>
+                                @elseif($month == 5)
+                                <option value="05">5 - May</option>
+                                @elseif($month == 6)
+                                <option value="06">6 - Jun</option>
+                                @elseif($month == 7)
+                                <option value="07">7 - Jul</option>
+                                @elseif($month == 8)
+                                <option value="08">8 - Aug</option>
+                                @elseif($month == 9)
+                                <option value="09">9 - Sep</option>
+                                @elseif($month == 10)
+                                <option value="10">10 - Oct</option>
+                                @elseif($month == 11)
+                                <option value="11">11 - Nov</option>
+                                @else
+                                <option value="12">12 - Dez</option>
+                                @endif                       
                                 <option value="01">1 - Jan</option>
                                 <option value="02">2 - Feb</option>
                                 <option value="03">3 - Mar</option>
@@ -50,7 +75,7 @@
                                 <option value="09">9 - Sep</option>
                                 <option value="10">10 - Oct</option>
                                 <option value="11">11 - Nov</option>
-                                <option value="12">12 - Dez</option>
+                                <option value="12">12 - Dez</option>                                                                                                     
                                 </select>
                             </div>                                                                          
                         </div>
