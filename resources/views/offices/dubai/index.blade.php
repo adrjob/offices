@@ -120,9 +120,9 @@ input.onclick = function () {
   this.value = null;
 };
   
-input.onchange = function () {
-  console.log(this.value);
-};
+// input.onchange = function () {
+//   console.log(this.value);
+// };
   
 
     </script>

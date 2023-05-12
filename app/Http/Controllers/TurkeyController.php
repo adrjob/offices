@@ -22,7 +22,7 @@ class TurkeyController extends Controller
             $now = Carbon::now();
             $users = Turkey::whereMonth('created_at', '=', $now->month)->get();        
             $total = $users->sum('total');               
-            return view('offices.turkey.index', ['dubai' => Turkey::get(), 'total' => $total]);     
+            return view('offices.turkey.index', ['dubai' => Turkey::get(), 'total' => $total, 'month' => $now->month]);     
         }        
         abort(403);        
     }

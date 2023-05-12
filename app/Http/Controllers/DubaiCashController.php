@@ -25,7 +25,7 @@ class DubaiCashController extends Controller
             $users = DubaiCash::whereMonth('created_at', '=', $now->month)->get();        
             $total = $users->sum('total');                
             // return view('offices.dubai.index', ['dubai' => Dubai::whereMonth('created_at', '=', $now->month)->get(), 'total' => $total]);     
-            return view('cash.dubai.index', ['dubai' => DubaiCash::get(), 'total' => $total]);     
+            return view('cash.dubai.index', ['dubai' => DubaiCash::get(), 'total' => $total, 'month' => $now->month]);     
         }
         abort(403);
 

@@ -6,9 +6,7 @@
     @push('js')
     <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-  
-    <!-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
     
     <script type="text/javascript">
 
@@ -103,11 +101,11 @@
     })
 
     $('#search-month').on('change', function () {
-        table.ajax.url('/api/instabul/' + this.value ).load();                
+        table.ajax.url('/api/vanuatu/' + this.value ).load();                
     });       
     
     
-var input = document.getElementsByTagName('input')[1];
+var input = document.getElementsByTagName('input');
 input.onclick = function () {
   this.value = null;
 };

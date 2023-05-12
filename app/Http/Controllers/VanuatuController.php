@@ -22,7 +22,7 @@ class VanuatuController extends Controller
             $now = Carbon::now();
             $users = Vanuatu::whereMonth('created_at', '=', $now->month)->get();        
             $total = $users->sum('total');                 
-            return view('offices.vanuatu.index', ['dubai' => Vanuatu::get(), 'total' => $total]);                 
+            return view('offices.vanuatu.index', ['dubai' => Vanuatu::get(), 'total' => $total, 'month' => $now->month]);                 
         }        
         abort(403);     
     }
