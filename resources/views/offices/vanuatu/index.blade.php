@@ -37,7 +37,7 @@
     var table = $('#example').DataTable({
         ajax: '/api/vanuatu/',
         // searching: false,
-        'iDisplayLength': 30,
+        'iDisplayLength': 40,
         columns: [
             // { data: 'id' },            
             { data: 'description' },
