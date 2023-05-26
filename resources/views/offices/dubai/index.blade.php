@@ -31,7 +31,7 @@
     var table = $('#example').DataTable({
         ajax: '/api/dubai/',
         // searching: false,
-        'iDisplayLength': 30,
+        'iDisplayLength': 40,
         columns: [
             // { data: 'id' },            
             { data: 'description' },
